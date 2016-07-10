@@ -1,0 +1,11 @@
+<shape 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:shape="rectangle">
+
+    <solid android:color="@color/btn_s_" />
+    
+    <stroke
+        android:width="1dp"
+        android:color="@color/btn_s"   
+        />
+</shape><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/drawable/style_btn_s_selected.xml -->

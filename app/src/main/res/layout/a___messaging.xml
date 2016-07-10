@@ -1,0 +1,155 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/relRecipient"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/header_color"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:id="@+id/handle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/style_btn_2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/back_image" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_product_owner_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="1dp"
+            android:layout_toRightOf="@+id/handle"
+            android:background="@drawable/style_btn_2"
+            android:clickable="true" >
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:background="@drawable/style_round"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/name_initial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_chat_seller_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/app_font_size" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_product_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/save"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/menu_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_btn_2"
+                android:clickable="true"
+                android:gravity="center"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp" >
+
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:src="@drawable/menu" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lstMessages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relSendMessage"
+        android:layout_below="@+id/relRecipient"
+        android:background="@drawable/bg_shadow"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:padding="0dip"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        tools:listitem="@layout/message_left" />
+
+    <RelativeLayout
+        android:id="@+id/relSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:paddingLeft="10dp" >
+
+        <EditText
+            android:id="@+id/txtTextBody"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/btnSend"
+            android:layout_alignTop="@+id/btnSend"
+            android:layout_marginBottom="-4dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/btnSend"
+            android:background="@android:color/white"
+            android:hint="Message..."
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_send" />
+    </RelativeLayout>
+
+</RelativeLayout>

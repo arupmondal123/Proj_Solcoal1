@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/Next"
+        android:title="Next"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/Done"
+        android:title="Done"
+        app:showAsAction="always|withText" />
+</menu><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/mobicomkitui/src/main/res/menu/group_create_menu.xml --><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/build/intermediates/exploded-aar/Proj_Solcoal1/mobicomkitui/unspecified/res/menu/group_create_menu.xml -->

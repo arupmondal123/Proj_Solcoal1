@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/header_color" >
+
+    <com.at.solcoal.m.DelayAutoCompleteTextView
+        android:id="@+id/geo_autocomplete"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/_4dp"
+        android:layout_marginEnd="@dimen/_35dp"
+        android:layout_marginRight="@dimen/_35dp"
+        android:layout_marginTop="@dimen/_4dp"
+        android:background="@color/header_color"
+        android:dropDownWidth="fill_parent"
+        android:hint="@string/search"
+        android:imeOptions="flagNoExtractUi|actionSearch"
+        android:inputType="textCapSentences"
+        android:padding="@dimen/_10dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/app_header_text_size" />
+
+    <ImageView
+        android:id="@+id/geo_autocomplete_clear"
+        android:layout_width="@dimen/_25dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginRight="@dimen/_12dp"
+        android:contentDescription="map_list_header_txt"
+        android:src="@drawable/cross2"
+        android:visibility="gone" />
+
+</FrameLayout>

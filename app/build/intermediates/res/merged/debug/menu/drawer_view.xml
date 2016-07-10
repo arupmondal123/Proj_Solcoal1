@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/NAV_ITEMS_EXTRA"
+       >
+        <item
+            android:id="@+id/browse_product"
+            android:icon="@drawable/ic_home_black_48dp"
+            android:clickable="true"
+            android:contextClickable="false"
+            android:textColor="@color/white"
+            android:itemBackground="@android:color/transparent"
+            android:title="@string/browse_product" />
+        <item
+            android:id="@+id/list_product"
+            android:icon="@drawable/ic_library_add_black_48dp"
+            android:textColor="@color/white"
+            android:title="@string/list_product" />
+        <item
+            android:id="@+id/my_chats"
+            android:icon="@drawable/ic_question_answer_black_48dp"
+            android:textColor="@color/white"
+            android:title="@string/dr_talk" />
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/ic_share_black_48dp"
+            android:textColor="@color/white"
+            android:title="@string/sharestring" />
+        <item
+            android:id="@+id/info"
+            android:icon="@drawable/ic_info_black_48dp"
+            android:textColor="@color/white"
+            android:title="@string/infostring" />
+    </group>
+</menu><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/menu/drawer_view.xml -->

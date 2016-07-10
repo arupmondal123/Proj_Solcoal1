@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.at.solcoal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/header_color"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:id="@+id/handle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/style_btn_2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:src="@drawable/back_image" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_toRightOf="@+id/handle"
+            android:background="@drawable/style_btn_2"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_2dp" >
+
+            <com.at.solcoal.utility.CircleImageView
+                android:id="@+id/p_image"
+                android:layout_width="41dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_random_face" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:layout_marginRight="@dimen/_5dp"
+                android:orientation="vertical" >
+
+
+
+                <TextView
+                    android:id="@+id/h_txt_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/h2"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/app_font_size" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/style_btn_2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/save_image" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/layout/app_header.xml -->

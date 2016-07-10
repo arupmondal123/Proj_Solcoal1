@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/Relativelayout01"
+    tools:context="com.at.solcoal.activity.InfoActivity">
+    <!-- The ActionBar displayed at the top -->
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/accent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="GENERAL"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="20dp"
+            android:textColor="@color/dark_black"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/aboutus"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:text="About Us"/>
+
+        <View
+            android:id="@+id/SplitLine_hor0"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height= "1dp"
+            android:background="@color/divider" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:paddingTop="20dp"
+        android:textColor="@color/dark_black"
+        android:id="@+id/customersupport"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Customer Support"/>
+
+        <View
+            android:id="@+id/SplitLine_hor1"
+            android:layout_width="match_parent"
+            android:layout_height= "1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/divider" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:paddingTop="20dp"
+        android:textColor="@color/dark_black"
+        android:id="@+id/feedback"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Feedback"/>
+
+        <View
+            android:id="@+id/SplitLine_hor2"
+            android:layout_width="match_parent"
+            android:layout_height= "1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/dark_black"
+            android:paddingTop="20dp"
+            android:id="@+id/faq"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="FAQ"/>
+
+        <View
+            android:id="@+id/SplitLine_hor3"
+            android:layout_width="match_parent"
+            android:layout_height= "1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="20dp"
+            android:textColor="@color/accent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="OTHERS"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/dark_black"
+            android:paddingTop="20dp"
+            android:id="@+id/rateus"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:text="Rate Us"/>
+        <View
+            android:id="@+id/SplitLine_hor4"
+            android:layout_width="match_parent"
+            android:layout_height= "1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/divider" />
+    </LinearLayout>
+
+</LinearLayout>
+<!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/layout/activity_info.xml -->

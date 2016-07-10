@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="transparent" type="color">#00000000</item>
+    <item name="white" type="color">#FFFFFF</item>
+    <item name="white_light" type="color">#FFFFFF</item>
+    <item name="black" type="color">#000000</item>
+    <item name="black_light" type="color">#77000000</item>
+    <item name="black_light2" type="color">#95000000</item>
+    <item name="black_light3" type="color">#99000000</item>
+    <item name="red" type="color">#FF0000</item>
+    <!-- <item name="header_color" type="color">#191919</item> -->
+    <item name="app_orange" type="color">#FF6600</item>
+    <item name="app_orange_light" type="color">#95FF6600</item>
+    <item name="app_grey" type="color">#666666</item>
+    
+    <item name="app_blue" type="color">#336699</item>
+    <item name="app_blue_light" type="color">#78a9da</item>
+    <item name="app_blue2" type="color">#144473</item>
+    <item name="app_black" type="color">#999999</item>
+    <item name="app_black2" type="color">#000005</item>
+    <item name="app_grey_light1" type="color">#05666666</item>
+    <item name="app_grey_light2" type="color">#CB666666</item>
+
+    <item name="app_background1" type="color">#e8e8e8</item>
+    <item name="app_background2" type="color">#f6f6f1</item>
+    <item name="app_background3" type="color">#f3f3f3</item>
+    <!-- <item name="app_background3" type="color">#f3f300</item> -->
+    <item name="app_button2" type="color">@color/app_pink</item>
+    <item name="app_pink" type="color">#FF6868</item>
+    <item name="app_button2_light" type="color">#95ff6868</item>
+    <item name="app_color1" type="color">#8e530c</item>
+    <item name="app_color2" type="color">#e18003</item>
+    <item name="app_color3" type="color">#6e6767</item>
+    <item name="app_color4" type="color">@color/app_orange</item>
+    <item name="app_color_grey" type="color">#CCCCCC</item>
+    <color name="sinch_purple">#ff63029d</color>
+    <color name="dark_gray">#ffb3b3b3</color>
+    <color name="off_white">#fffafafa</color>
+    <color name="color_black">#191919</color>
+    <color name="color_our_msg">#7fc0e4</color>
+    <color name="color_rcvd_msg">#c7c5c5</color>
+    <color name="go_online_background">#c7c5c5</color>
+    
+    
+    <!-- . -->
+    <color name="btn_s">#ff6327</color>
+    <color name="btn_s_">#50ff6327</color>
+    <!-- . -->
+    <color name="btn_g">#ff666b</color>
+    <color name="btn_g_">#50ff666b</color>
+    <!-- . -->
+    <color name="btn_f">#395a93</color>
+    <color name="btn_f_">#50395a93</color>
+    <!-- . -->
+    <!-- . -->
+    <color name="drawer">@color/app_background3</color>
+    <!-- . -->
+    <!-- . -->
+    <color name="b">#5868f8</color>
+    <!-- . -->
+
+
+    <color name="green">#009900</color>
+    <color name="blue">#000099</color>
+    <color name="orange">#FF9900</color>
+
+
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="accent">#FF4081</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <item name="header_color" type="color">@color/applozic_theme_color_primary</item>
+
+
+
+</resources>

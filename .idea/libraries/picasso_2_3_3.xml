@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="picasso-2.3.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_ImageSlidingLibrary2_picasso_233/libs/picasso-2.3.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:minHeight="?attr/actionBarSize"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:theme="@style/toolbar_theme"
+    android:background="@color/applozic_theme_color_primary">
+</android.support.v7.widget.Toolbar><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/layout/toolbar.xml -->

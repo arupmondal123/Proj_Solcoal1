@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Lib_FacebookSDK/Lib_FacebookSDK.iml" filepath="$PROJECT_DIR$/Lib_FacebookSDK/Lib_FacebookSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Proj_Solcoal1.iml" filepath="$PROJECT_DIR$/Proj_Solcoal1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_ImageSlidingLibrary2_picasso_233/lib_ImageSlidingLibrary2_picasso_233.iml" filepath="$PROJECT_DIR$/lib_ImageSlidingLibrary2_picasso_233/lib_ImageSlidingLibrary2_picasso_233.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobicomkit/mobicomkit.iml" filepath="$PROJECT_DIR$/mobicomkit/mobicomkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobicomkitui/mobicomkitui.iml" filepath="$PROJECT_DIR$/mobicomkitui/mobicomkitui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobicommons/mobicommons.iml" filepath="$PROJECT_DIR$/mobicommons/mobicommons.iml" />
+    </modules>
+  </component>
+</project>

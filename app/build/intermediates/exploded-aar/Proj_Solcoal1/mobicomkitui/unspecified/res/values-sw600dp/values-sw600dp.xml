@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/mobicomkitui/src/main/res/values-sw600dp/dimens.xml -->
+    <eat-comment/>
+    <dimen name="left_menu_item_text_size">16sp</dimen>
+    <dimen name="listview_item_padding">16dp</dimen>
+    <dimen name="message_text_size">15sp</dimen>
+    <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/mobicomkitui/src/main/res/values-sw600dp/integers.xml -->
+    <eat-comment/>
+    <integer name="contact_detail_percent">65</integer>
+    <integer name="contact_list_percent">35</integer>
+    <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/mobicomkitui/src/main/res/values-sw600dp/mobiframework_styles.xml -->
+    <eat-comment/>
+    <style name="ContactListView">
+        <item name="android:verticalScrollbarPosition">left</item>
+        <item name="android:fastScrollAlwaysVisible">true</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+    </style>
+</resources>

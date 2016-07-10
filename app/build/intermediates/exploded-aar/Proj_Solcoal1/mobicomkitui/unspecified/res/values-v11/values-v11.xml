@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/mobicomkitui/src/main/res/values-v11/mobiframework_styles.xml -->
+    <eat-comment/>
+    <style name="addressButton" parent="@android:style/Widget.Holo.Button.Borderless"/>
+    <style name="listViewActivatedStyle">
+        <item name="android:background">?android:attr/activatedBackgroundIndicator</item>
+    </style>
+    <style name="quickContactBadgeStyle"/>
+</resources>

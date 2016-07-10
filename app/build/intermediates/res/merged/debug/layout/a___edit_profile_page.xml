@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:longClickable="false" >
+
+    <LinearLayout
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/header_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Log in to DrGrep"
+            android:textColor="@color/app_black"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:id="@+id/sign_in_register"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:clickable="true"
+            android:padding="20dp" >
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/style_round2"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/name_initial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=""
+                    android:textColor="@color/app_black"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp" >
+
+            <RelativeLayout
+                android:id="@+id/browse_product"
+                style="@style/Base.TextAppearance.AppCompat.Button"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:paddingEnd="14dp"
+                android:paddingRight="14dp"
+                android:textAlignment="textStart" >
+
+                <EditText
+                    android:id="@+id/signed_in_name"
+                    style="@style/edittextstyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:layout_toEndOf="@+id/bpi"
+                    android:layout_toRightOf="@+id/bpi"
+                    android:background="@android:color/white"
+                    android:maxLength="30"
+                    android:paddingLeft="2dp"
+                    
+                    android:text=""
+                    android:textAlignment="textStart"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/app_black"
+                    android:textSize="@dimen/app_header_text_size" />
+
+                <ImageView
+                    android:id="@+id/bpi"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/profile_" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_black"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/list_product"
+                style="@style/Base.TextAppearance.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:paddingRight="14dp" >
+
+                <ImageView
+                    android:id="@+id/lpi"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/email" />
+
+                <EditText
+                    android:id="@+id/signed_in_email"
+                    style="@style/edittextstyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:layout_toEndOf="@+id/lpi"
+                    android:layout_toRightOf="@+id/lpi"
+                    android:background="@android:color/white"
+                    android:paddingLeft="2dp"
+                    android:text=""
+                    android:inputType="none"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/app_black"
+                    android:textSize="@dimen/app_header_text_size" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_black"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/my_chats"
+                style="@style/Base.TextAppearance.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:paddingRight="14dp" >
+
+                <EditText
+                    android:id="@+id/dob_et"
+                    style="@style/edittextstyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:layout_toEndOf="@+id/mci"
+                    android:layout_toRightOf="@+id/mci"
+                    android:background="@android:color/white"
+                    android:paddingLeft="2dp"
+                    android:text=""
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/app_black"
+                    android:textSize="@dimen/app_header_text_size" />
+
+                <ImageView
+                    android:id="@+id/mci"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:longClickable="false"
+                    android:src="@drawable/dob" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_black"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/gender_relative_layout"
+                style="@style/Base.TextAppearance.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/white"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/lop"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/sex" />
+
+                <EditText
+                    android:id="@+id/gender"
+                    style="@style/edittextstyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:layout_toEndOf="@+id/lop"
+                    android:layout_toRightOf="@+id/lop"
+                    android:background="@android:color/white"
+                    android:paddingLeft="2dp"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:text=""
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/app_black"
+                    android:textSize="@dimen/app_header_text_size" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_black"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_my_chat"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/style_btn_s"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:id="@+id/back_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/divider_"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_chat_seller_id121"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="BACK"
+                android:textColor="@color/white"
+                android:textSize="@dimen/app_font_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/divider_"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:visibility="visible" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/proceed_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/divider_"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_chat_seller_id121212"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="SAVE"
+                android:textColor="@color/white"
+                android:textSize="@dimen/app_font_size" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/layout/a___edit_profile_page.xml -->

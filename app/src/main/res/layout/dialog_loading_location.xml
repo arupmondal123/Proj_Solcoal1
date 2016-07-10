@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_270dp"
+    android:layout_height="@dimen/_270dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_launcher" />
+
+            <com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:radius="5dp"
+                android:color="#8C2323"
+                app:dd_numDots="5"
+                app:dd_scaleMultiplier="1.5"
+                app:dd_animationDuration="1000"
+                app:dd_horizontalSpacing="4dp"
+                />
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="left"
+                android:layout_marginTop="@dimen/_20dp"
+                android:text="Finding Products Nearby You"
+                android:textColor="@color/primary_dark"
+                android:textSize="@dimen/app_font_size" />
+
+        </LinearLayout>
+</LinearLayout>

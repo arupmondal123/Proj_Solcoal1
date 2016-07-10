@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <scale
+        android:duration="@android:integer/config_shortAnimTime"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="0%"
+        android:toXScale="0.3"
+        android:toYScale="0.3" />
+    <alpha
+        android:duration="@android:integer/config_shortAnimTime"
+        android:fromAlpha="1.0"
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:toAlpha="0.0" />
+</set><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/mobicomkitui/src/main/res/anim/mobicom_multimedia_option_shrink_from_bottom.xml --><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/build/intermediates/exploded-aar/Proj_Solcoal1/mobicomkitui/unspecified/res/anim/mobicom_multimedia_option_shrink_from_bottom.xml -->

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.at.solcoal.activity.FeedBackActivity">
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/include" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:paddingTop="20dp"
+        android:textColor="@color/accent"
+        android:id="@+id/writetous"
+        android:clickable="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Write To Us"
+        android:layout_below="@+id/include" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:id="@+id/edittext"
+        android:background="@drawable/textinputborder"
+        android:gravity="top|left"
+        android:layout_alignLeft="@id/writetous"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/writetous"
+ />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:backgroundTint="@color/accent"
+        android:layout_margin="@dimen/fab_margin"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        android:src="@android:drawable/ic_dialog_email" />
+
+
+</RelativeLayout>

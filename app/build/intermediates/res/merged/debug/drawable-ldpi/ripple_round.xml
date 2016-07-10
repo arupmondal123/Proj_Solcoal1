@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/primary"
+    >
+
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/accent"/>
+        </shape>
+    </item>
+</ripple><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/drawable-ldpi/ripple_round.xml -->

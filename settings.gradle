@@ -1,0 +1,3 @@
+include ':app', ':Lib_FacebookSDK', ':mobicomkitui', ':mobicomkit', ':mobicommons'
+include ':lib_ImageSlidingLibrary2_picasso_233'
+

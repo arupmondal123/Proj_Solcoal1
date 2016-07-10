@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.at.solcoal"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Required to show current location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!--  -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+----    
+    <!-- Changes for Applozic starts /> -->
+
+    <uses-permission android:name="com.at.solcoal.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.at.solcoal.permission.MAPS_RECEIVE" />
+
+    <permission
+        android:name="com.at.solcoal.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.at.solcoal.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Added for Applozic ends /> -->
+
+
+    <!-- Required OpenGL ES 2.0. for Maps V2 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/ApplozicTheme" >
+        <service
+            android:name=".intentservice.FetchAddressIntentService"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.SigninActivity"
+            android:label="DrGrep"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:background="@color/transparent"
+            android:label="DrGrep"
+            android:noHistory="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowNoTitle="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ProductAddPictureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProductDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.GoogleMapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FullPictureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Congratulations"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProductAddProductActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HoldingPageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MessagingActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".activity.SinchService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <!-- Goolge Maps API Key -->
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".activity.UserLoginInfo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.UserProductList"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_user_product_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".activity.UserChatEntryHoldingPage"
+            android:label="@string/title_activity_user_chat_entry_holding_page" >
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.login.FbLoginActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".activity.login.GPlusLoginActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAAU7uWQ_BkAG8hNV7XCilmJg9psi1CsH0" />
+
+        <activity
+            android:name=".activity.SearchInputActivity"
+            android:parentActivityName=".activity.ProductListActivity"
+            android:screenOrientation="portrait" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ProductListActivity" />
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+        <!--
+        <meta-data
+                   android:name="com.google.android.gms.version"
+                   android:value="@integer/google_play_services_version" />
+        -->
+        <activity
+            android:name=".activity.AfterLoginActivity___"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EditProfileActivity___"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.SplashActivity"
+            android:label="DrGrep"
+            android:theme="@style/SplashTheme" >
+        </activity>
+        <!-- Changes for Applozic starts /> -->
+
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/ApplozicTheme" >
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.people.activity.MobiComKitPeopleActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_contacts_list"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/Applozic.People.Theme"
+            android:windowSoftInputMode="adjustResize" >
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_contacts" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.FullScreenImageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Image"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/Applozic_FullScreen_Theme" >
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ContactSelectionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelCreateActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelNameActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme" >
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelInfoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.MobiComAttachmentSelectorActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.MobicomLocationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
+        <service
+            android:name="com.applozic.mobicomkit.api.conversation.MessageIntentService"
+            android:exported="false" />
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+        <service
+            android:name="com.applozic.mobicomkit.api.conversation.ApplozicIntentService"
+            android:exported="false" />
+        <service
+            android:name="com.applozic.mobicomkit.api.conversation.ApplozicMqttIntentService"
+            android:exported="false" />
+
+        <receiver android:name="com.applozic.mobicomkit.broadcast.TimeChangeBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.applozic.mobicomkit.broadcast.ConnectivityReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.applozic.mobicomkit.uiwidgets.notification.MTNotificationBroadcastReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="${applicationId}.send.notification" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.applozic.mobicomkit.broadcast.TimeChangeBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.applozic.mobicomkit.broadcast.ConnectivityReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.at.solcoal" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".ApplozicGcmListenerService" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".GcmInstanceIDListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.applozic.application.key"
+            android:value="gmai1f3caf82f01b87b61b82790df4c363758" /> <!-- Applozic Application Key -->
+
+        <meta-data
+            android:name="com.applozic.mobicomkit.notification.icon"
+            android:resource="@mipmap/ic_launcher1" /> <!-- Launcher Icon -->
+
+        <meta-data
+            android:name="com.applozic.mobicomkit.notification.smallIcon"
+            android:resource="@mipmap/ic_launcher1" /> <!-- Launcher white Icon -->
+
+        <meta-data
+            android:name="share_text"
+            android:value="YOUR INVITE MESSAGE" /> <!-- Invite Message -->
+
+        <meta-data
+            android:name="main_folder_name"
+            android:value="@string/default_media_location_folder" /> <!-- Attachment Folder Name -->
+
+
+        <!--
+        For testing purpose use AIzaSyAYB1vPc4cpn_FJv68eS_ZGe1UasBNwxLI
+        To disable the location sharing via map add this line ApplozicSetting.getInstance(context).disableLocationSharingViaMap(); in onSuccess of Applozic UserLoginTask
+        -->
+
+        <meta-data
+            android:name="activity.open.on.notification"
+            android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" /> <!-- NOTE : Do NOT change this value -->
+
+        <meta-data
+            android:name="com.package.name"
+            android:value="${applicationId}" /> <!-- NOTE: Do NOT change this, it should remain same i.e 'com.package.name' -->
+        <!-- Changes for Applozic ends /> -->
+
+        <activity
+            android:name=".activity.InfoActivity"
+            android:label="@string/title_activity_info" >
+        </activity>
+        <activity
+            android:name=".activity.AboutusActivity"
+            android:label="@string/title_activity_aboutus" >
+        </activity>
+        <activity
+            android:name=".activity.CustomerSupport"
+            android:label="@string/title_activity_customer_support" >
+        </activity>
+        <activity
+            android:name=".activity.FeedBackActivity"
+            android:label="@string/title_activity_feed_back"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name=".activity.FaqActivity"
+            android:label="@string/title_activity_faq" >
+        </activity>
+        <activity
+            android:name=".activity.ProductListActivity"
+            android:label="@string/title_activity_product_list"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".activity.SearchInputActivity" />
+
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="NineOldAndroid-2.4.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_ImageSlidingLibrary2_picasso_233/libs/NineOldAndroid-2.4.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

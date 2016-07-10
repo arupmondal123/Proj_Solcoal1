@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/values-w820dp/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">64dp</dimen>
+    <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/build/intermediates/exploded-aar/Proj_Solcoal1/mobicomkitui/unspecified/res/values-w820dp/values-w820dp.xml -->
+    <eat-comment/>
+    <dimen name="mobicom_activity_horizontal_margin">64dp</dimen>
+</resources>
