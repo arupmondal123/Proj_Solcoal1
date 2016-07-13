@@ -1765,6 +1765,9 @@
     <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="Products">ProductListActivity</string>
     <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/build/intermediates/exploded-aar/Proj_Solcoal1/mobicomkitui/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="ScheduleText">Schedule</string>
@@ -2103,6 +2106,7 @@
     <string name="menu_edit_contact">Edit Contact</string>
     <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="menu_location">Location</string>
     <string name="menu_search">Search</string>
     <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/build/intermediates/exploded-aar/Proj_Solcoal1/mobicomkitui/unspecified/res/values/values.xml -->
     <eat-comment/>
@@ -2164,7 +2168,6 @@
     <string name="price_must_be_">"Price must not be less than \u20B91.00"</string>
     <string name="product_edited_successfully_">"Product Successfully Edited."</string>
     <string name="product_will_appear_to_the_people_shortly">"Product will appear to the people shortly"</string>
-    <string name="products">PRODUCTS</string>
     <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/build/intermediates/exploded-aar/Proj_Solcoal1/mobicomkitui/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="quick_conversation_loading">loading conversation..</string>
@@ -2247,7 +2250,7 @@
     <string name="title_activity_mobi_com">MobiComActivity</string>
     <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="title_activity_product_list">ProductListActivity</string>
+    <string name="title_activity_product_list">Products</string>
     <string name="title_activity_search_input">SearchInputActivity</string>
     <string name="title_activity_signin">SigninActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
@@ -3513,6 +3516,7 @@
         <item name="colorPrimaryDark">@color/applozic_theme_color_primary_dark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="colorControlHighlight">@color/primary_dark_color</item>
+
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
         <item name="android:windowContentTransitions">true</item>

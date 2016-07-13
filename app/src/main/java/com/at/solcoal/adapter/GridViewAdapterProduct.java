@@ -194,7 +194,7 @@ public class GridViewAdapterProduct extends BaseAdapter
 				intent.putExtra(AppConstant.P_ID, _product_id);
 				// activity.finish();
 				activity.startActivity(intent);
-				ANIM.onStartActivity(activity);
+				//ANIM.onStartActivity(activity);
 			}
 			/* /change */
 

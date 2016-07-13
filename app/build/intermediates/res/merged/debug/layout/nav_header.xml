@@ -5,7 +5,7 @@
     android:id="@+id/relativelayoutheader"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    android:background="@drawable/sample_profile1"
+    android:background="@drawable/profile3"
     android:clickable="true"
     android:paddingRight="14dp" >
 
@@ -40,7 +40,7 @@
         android:enabled="true"
         android:text="@string/sign_in_register"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#FF6600"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/app_header_text_size" />
 
     <TextView

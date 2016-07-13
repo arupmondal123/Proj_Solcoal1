@@ -3,10 +3,13 @@
     android:id="@+id/card_view1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"
         android:elevation="1dp"
         android:foreground="?android:attr/selectableItemBackground"
-        android:stateListAnimator="@drawable/translation_selector"
+        android:focusable="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
         card_view:cardCornerRadius="2dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +23,9 @@
             android:layout_alignParentTop="true"
             android:layout_height="160dp"
             android:scaleType="centerCrop"
-            android:transitionName="picture"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:src="@drawable/img_random_face" />
             <TextView
                 android:id="@+id/p_name"

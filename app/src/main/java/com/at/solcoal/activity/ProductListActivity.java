@@ -24,6 +24,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Fade;
 import android.transition.Slide;
 import android.util.Log;
 import android.util.TypedValue;
@@ -131,13 +133,15 @@ public class ProductListActivity extends AppCompatActivity   {
 
 
     private DrawerLayout mDrawer;
+    private LinearLayout linearLayout;
     private NavigationView nvDrawer;
     private Toolbar toolbar;
     private ActionBarDrawerToggle drawerToggle;
+    private MenuItem searchMenuItem;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_product_list);
@@ -165,6 +169,8 @@ public class ProductListActivity extends AppCompatActivity   {
         mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
         progress1 = (CircleProgressBar) findViewById(R.id.progressBar);
         progress1.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
+
+        linearLayout = (LinearLayout) findViewById(R.id.body);
         context = ProductListActivity.this;
         activity = ProductListActivity.this;
         TAG = "ProductListActivity";
@@ -179,15 +185,11 @@ public class ProductListActivity extends AppCompatActivity   {
 
 		/**/
 
-        try
-        {
-            if (getIntent().getExtras().getString(AppConstant.START_APP).equals(AppConstant.START_APP_FIRST_TIME))
-            {
+        try {
+            if (getIntent().getExtras().getString(AppConstant.START_APP).equals(AppConstant.START_APP_FIRST_TIME)) {
                 fetchProductConciseListAndSetHeaderAddress();
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e(TAG + "", "Not First Time.");
             // if (ProductConciseList.productConciseList.size() > 0)
             // {
@@ -197,26 +199,23 @@ public class ProductListActivity extends AppCompatActivity   {
             // Toast.showSmallToast(context, "No Data found.");
             // }
         }
-        if (IsLocationChanged.isChanged)
-        {
+        if (IsLocationChanged.isChanged) {
             IsLocationChanged.isChanged = false;
             fetchProductConciseListAndSetHeaderAddress();
         }
 
         gridView = (GridView) findViewById(R.id.grid_view);
-        InitializeGridLayout(); //
-        //setHeaderAddress();
-        //drawer();
-/*
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        InitializeGridLayout();
+
+
+        imageButton = (ImageButton) findViewById(R.id.locationimageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, SearchInputActivity.class);
-                startActivity(intent);
+                startGoogleMapActivity();
             }
         });
-*/
+
         mSwipeRefreshLayout.setOnRefreshListener(new ScrollableSwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -230,13 +229,12 @@ public class ProductListActivity extends AppCompatActivity   {
 
         /*Code to setup Header*/
         View headerView = nvDrawer.getHeaderView(0);
-        TextView sign_in_register_tv = (TextView)headerView.findViewById(R.id.sign_in_register_tv);
+        TextView sign_in_register_tv = (TextView) headerView.findViewById(R.id.sign_in_register_tv);
 
         //RelativeLayout logout = (RelativeLayout) findViewById(R.id.logout);
-        LinearLayout name_initial_layout = (LinearLayout)headerView.findViewById(R.id.name_initial_layout);
+        LinearLayout name_initial_layout = (LinearLayout) headerView.findViewById(R.id.name_initial_layout);
 
-        if (isUserLoggedIn())
-        {
+        if (isUserLoggedIn()) {
             String userName = getUserName();
             //Toast.showSmallToast(context, "User Name"+userName);
             ((TextView) headerView.findViewById(R.id.username_tv)).setText(userName);
@@ -246,39 +244,36 @@ public class ProductListActivity extends AppCompatActivity   {
             View.OnClickListener onCLick = new View.OnClickListener() {
 
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
                     browseUserProduct();
                 }
             };
 
             name_initial_layout.setOnClickListener(onCLick);
             name_initial_layout.setVisibility(View.VISIBLE);
-			/* change */ ((RelativeLayout)headerView.findViewById(R.id.relativelayoutheader)).setOnClickListener(onCLick);
+			/* change */
+            ((RelativeLayout) headerView.findViewById(R.id.relativelayoutheader)).setOnClickListener(onCLick);
             //logout.setVisibility(View.VISIBLE);
-        }
-        else
-        {
+        } else {
             name_initial_layout.setVisibility(View.GONE);
-            ((TextView)headerView.findViewById(R.id.username_tv)).setVisibility(View.GONE);
+            ((TextView) headerView.findViewById(R.id.username_tv)).setVisibility(View.GONE);
 
             View.OnClickListener clickL = new View.OnClickListener() {
 
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
                     startSignInActivity();
                 }
             };
             sign_in_register_tv.setOnClickListener(clickL);
-			/* change */ ((RelativeLayout)headerView.findViewById(R.id.relativelayoutheader)).setOnClickListener(clickL);
+			/* change */
+            ((RelativeLayout) headerView.findViewById(R.id.relativelayoutheader)).setOnClickListener(clickL);
             sign_in_register_tv.setVisibility(View.VISIBLE);
             //logout.setVisibility(View.GONE);
+
+
         }
-
     }
-
-
     private ActionBarDrawerToggle setupDrawerToggle() {
         return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
     }
@@ -289,7 +284,7 @@ public class ProductListActivity extends AppCompatActivity   {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         Menu m = nvDrawer.getMenu();
-                        for (int i=0;i<m.size();i++) {
+                        for (int i = 0; i < m.size(); i++) {
                             MenuItem mi = m.getItem(i);
                             if (!(mi.getItemId() == menuItem.getItemId())) {
                                 mi.setChecked(false);
@@ -308,6 +303,7 @@ public class ProductListActivity extends AppCompatActivity   {
 
         switch(menuItem.getItemId()) {
             case R.id.browse_product:
+                linearLayout.setVisibility(View.VISIBLE);
                 break;
             case R.id.list_product:
                 startProductAddProductActivity();
@@ -363,6 +359,10 @@ public class ProductListActivity extends AppCompatActivity   {
         mDrawer.closeDrawers();
     }
 
+    public MenuItem getSearchMenuItem() {
+        return searchMenuItem;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -373,6 +373,37 @@ public class ProductListActivity extends AppCompatActivity   {
         search.setSearchableInfo(searchManager.getSearchableInfo(new ComponentName(this, SearchInputActivity.class)));
         search.setQueryHint(getResources().getString(R.string.search_hint));
 
+        search.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        search.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                linearLayout.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                MenuItem searchMenuItem = getSearchMenuItem();
+                if (searchMenuItem != null) {
+                    searchMenuItem.collapseActionView();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // ...
+                return true;
+            }
+        });
 
         return true;
     }
@@ -403,12 +434,14 @@ public class ProductListActivity extends AppCompatActivity   {
         if (id == R.id.menu_search) {
 
             Intent intent = new Intent(ProductListActivity.this, SearchInputActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, 2);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     public boolean onPrepareOptionsMenu(Menu menu)
     {
@@ -440,12 +473,29 @@ public class ProductListActivity extends AppCompatActivity   {
 
 
     private void setupWindowAnimations() {
-        Slide slide = null;
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            Slide slide = null;
+            Explode explode = null;
+
+            explode = new Explode();
+            //explode.setStartDelay(1000);
+            explode.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+
+
+            Fade fade = new Fade();
+            fade.setDuration(2000);
+
+            getWindow().setEnterTransition(explode);
+            getWindow().setReenterTransition(explode);
+
+            getWindow().setExitTransition(fade);
+            /*
             slide = new Slide();
             slide.setDuration(1500);
             slide.setSlideEdge(Gravity.LEFT);
-            getWindow().setEnterTransition(slide);
+            getWindow().setEnterTransition(slide);*/
+            //getWindow().setExitTransition(slide);
             //getWindow().setExitTransition(slide);
             //getWindow().setReenterTransition(slide);
         }
@@ -472,7 +522,9 @@ public class ProductListActivity extends AppCompatActivity   {
     protected void onResume()
     {
         super.onResume();
+
         backButtonCount =0;
+
         Log.e(TAG + "_", "onResume()");
         try
         {
@@ -623,6 +675,7 @@ public class ProductListActivity extends AppCompatActivity   {
 
         if (layoutRefresh == false) {
             progress1.setVisibility(View.VISIBLE);
+
         }
 	/*
 		progressDialog = new ProgressDialog(context, R.style.ProgressDialogTheme);
@@ -735,6 +788,7 @@ public class ProductListActivity extends AppCompatActivity   {
                         Toast.showSmallToast(context, "Error!!!");
                         //mDilatingDotsProgressBar.hideNow();
                         progress1.setVisibility(View.INVISIBLE);
+                        linearLayout.setVisibility(View.VISIBLE);
 
                         //progressDialog.dismiss();
                     }
@@ -747,6 +801,7 @@ public class ProductListActivity extends AppCompatActivity   {
                 {
                     //progressDialog.dismiss();
                     progress1.setVisibility(View.INVISIBLE);
+                    linearLayout.setVisibility(View.VISIBLE);
                     //mDilatingDotsProgressBar.hideNow();
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
@@ -759,6 +814,7 @@ public class ProductListActivity extends AppCompatActivity   {
                 //progressDialog.dismiss();
                 //mDilatingDotsProgressBar.hideNow();
                 progress1.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.VISIBLE);
                 Toast.showNetworkErrorMsgToast(context);
             };
         });
@@ -791,8 +847,8 @@ public class ProductListActivity extends AppCompatActivity   {
     private void InitializeGridLayout()
     {
         int NUM_OF_COLUMNS = 2; // Number of columns of Grid View
-        int GRID_PADDING1 = 2; // Gridview image padding in dp
-        int GRID_PADDING2 = 8; // Gridview image padding in dp
+        int GRID_PADDING1 = 13; // Gridview image padding in dp
+        int GRID_PADDING2 = 13; // Gridview image padding in dp
         float padding1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, GRID_PADDING1,
                 getResources().getDisplayMetrics());
         float padding2 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, GRID_PADDING2,
@@ -837,6 +893,7 @@ public class ProductListActivity extends AppCompatActivity   {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        Toast.showSmallToast(context, "Entered onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAPTURE_IMAGE)
         {
@@ -857,6 +914,12 @@ public class ProductListActivity extends AppCompatActivity   {
                 Toast.showSmallToast(context, getResources().getString(R.string.photo_was_not_taken));
             }
         }
+        if(requestCode==2)
+        {
+            Toast.showSmallToast(context, "Entered requestcode");
+            linearLayout.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void startAddproduct()

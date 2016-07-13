@@ -169,7 +169,8 @@
         <activity
             android:name="com.at.solcoal.activity.SearchInputActivity"
             android:parentActivityName="com.at.solcoal.activity.ProductListActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" >
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -444,7 +445,6 @@
         <activity
             android:name="com.at.solcoal.activity.ProductListActivity"
             android:label="@string/title_activity_product_list"
-            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" >
             <meta-data

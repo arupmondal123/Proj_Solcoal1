@@ -61,6 +61,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -79,6 +81,8 @@ import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.SlidingDrawer.OnDrawerCloseListener;
 import android.widget.SlidingDrawer.OnDrawerOpenListener;
+
+import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
 import com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar;
 
 
@@ -87,7 +91,7 @@ import android.widget.SearchView;
 import com.at.solcoal.utility.JSONParser;
 
 
-public class SearchInputActivity extends Activity {
+public class SearchInputActivity extends AppCompatActivity {
     private Context context = null;
 
     private Activity activity = null;
@@ -140,17 +144,36 @@ public class SearchInputActivity extends Activity {
 
     EditText editText;
 
-    private  DilatingDotsProgressBar mDilatingDotsProgressBar = null;
+    private LinearLayout linearLayout;
+
+
+    private CircleProgressBar progress1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_search_input);
         context = SearchInputActivity.this;
         activity = SearchInputActivity.this;
-        mDilatingDotsProgressBar = (DilatingDotsProgressBar) findViewById(R.id.progress);
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        getSupportActionBar().setTitle("Search Results");
+
+        //mDilatingDotsProgressBar = (DilatingDotsProgressBar) findViewById(R.id.progress);
+        progress1 = (CircleProgressBar) findViewById(R.id.progressBar);
+        progress1.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
+        linearLayout = (LinearLayout) findViewById(R.id.body);
         TAG = "SearchInputActivity";
         Log.e(TAG + "_", "onCreate()");
 
@@ -255,18 +278,26 @@ public class SearchInputActivity extends Activity {
     @Override
     public void onBackPressed() {
 
-        SearchInputActivity.this.finish();
+        /*Toast.showSmallToast(context, "onBacpressed");
+        Intent intent1=new Intent();
+        intent1.putExtra("MESSAGE","test");
+        setResult(2, intent1);*/
 
+/*
         if(IsLocationChanged.isChanged)
         {
 			IsLocationChanged.isChanged = false;
+*/
+        SearchInputActivity.this.finish();
+        Intent intent = new Intent(SearchInputActivity.this,ProductListActivity.class);
+        intent.putExtra(AppConstant.START_APP, AppConstant.START_APP_FIRST_TIME);
+        intent.putExtra("userInfo", userInfo);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
 
-            Intent intent = new Intent(SearchInputActivity.this,ProductListActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
 
         ANIM.onBack(activity);
+        //super.onBackPressed();
         // clearProductConciseList();
         // ProductListPage.this.finish();
     }
@@ -278,8 +309,8 @@ public class SearchInputActivity extends Activity {
 
     private void InitializeGridLayout() {
         int NUM_OF_COLUMNS = 2; // Number of columns of Grid View
-        int GRID_PADDING1 = 2; // Gridview image padding in dp
-        int GRID_PADDING2 = 8; // Gridview image padding in dp
+        int GRID_PADDING1 = 13; // Gridview image padding in dp
+        int GRID_PADDING2 = 13; // Gridview image padding in dp
         float padding1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, GRID_PADDING1,
                 getResources().getDisplayMetrics());
         float padding2 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, GRID_PADDING2,
@@ -313,7 +344,10 @@ public class SearchInputActivity extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             clearProductConciseList();
-            mDilatingDotsProgressBar.showNow();
+            //mDilatingDotsProgressBar.showNow();
+
+            progress1.setVisibility(View.VISIBLE);
+
             //progressDialog = new ProgressDialog(context, R.style.ProgressDialogThemeSearch);
             //progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Large);
 
@@ -340,7 +374,10 @@ public class SearchInputActivity extends Activity {
         @Override
         protected void onPostExecute(JSONObject json) {
             //progressDialog.dismiss();
-            mDilatingDotsProgressBar.hideNow();
+            //mDilatingDotsProgressBar.hideNow();
+            progress1.setVisibility(View.INVISIBLE);
+            linearLayout.setVisibility(View.VISIBLE);
+
             try {
 
                 try {
@@ -443,7 +480,8 @@ public class SearchInputActivity extends Activity {
                 //mDilatingDotsProgressBar.hideNow();
 
             } finally {
-            mDilatingDotsProgressBar.hideNow();
+                progress1.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.VISIBLE);
             }
         };
 

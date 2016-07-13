@@ -49,6 +49,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.transition.Explode;
 import android.transition.Slide;
 import android.transition.TransitionInflater;
 import android.util.Log;
@@ -639,13 +640,20 @@ public class MainActivity extends Activity
 
 	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 	private void setupWindowAnimations() {
-		Slide slide = null;
+		/*Slide slide = null;
 
 			slide = new Slide();
 			slide.setSlideEdge(Gravity.TOP);
 			slide.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
-			getWindow().setExitTransition(slide);
-			getWindow().setReenterTransition(slide);
+			*/
+		    Explode explode = null;
+
+			explode = new Explode();
+			explode.setStartDelay(1000);
+			explode.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+
+			getWindow().setExitTransition(explode);
+			getWindow().setReenterTransition(explode);
 		}
 
 	protected void startIntentService()

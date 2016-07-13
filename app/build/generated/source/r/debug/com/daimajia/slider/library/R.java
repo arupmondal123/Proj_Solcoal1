@@ -58,19 +58,19 @@ public final class R {
 		public static final int ZoomIn = 0x7f0f004d;
 		public static final int ZoomOut = 0x7f0f004e;
 		public static final int ZoomOutSlide = 0x7f0f004f;
-		public static final int daimajia_indicator_wrapper = 0x7f0f0196;
-		public static final int daimajia_slider_image = 0x7f0f0211;
-		public static final int daimajia_slider_viewpager = 0x7f0f0217;
-		public static final int default_bottom_left_indicator = 0x7f0f021a;
-		public static final int default_bottom_right_indicator = 0x7f0f0219;
-		public static final int default_center_bottom_indicator = 0x7f0f0218;
-		public static final int default_center_top_indicator = 0x7f0f021b;
-		public static final int default_center_top_left_indicator = 0x7f0f021d;
-		public static final int default_center_top_right_indicator = 0x7f0f021c;
-		public static final int description = 0x7f0f0214;
-		public static final int description_layout = 0x7f0f0213;
+		public static final int daimajia_indicator_wrapper = 0x7f0f0194;
+		public static final int daimajia_slider_image = 0x7f0f020f;
+		public static final int daimajia_slider_viewpager = 0x7f0f0215;
+		public static final int default_bottom_left_indicator = 0x7f0f0218;
+		public static final int default_bottom_right_indicator = 0x7f0f0217;
+		public static final int default_center_bottom_indicator = 0x7f0f0216;
+		public static final int default_center_top_indicator = 0x7f0f0219;
+		public static final int default_center_top_left_indicator = 0x7f0f021b;
+		public static final int default_center_top_right_indicator = 0x7f0f021a;
+		public static final int description = 0x7f0f0212;
+		public static final int description_layout = 0x7f0f0211;
 		public static final int invisible = 0x7f0f001a;
-		public static final int loading_bar = 0x7f0f0212;
+		public static final int loading_bar = 0x7f0f0210;
 		public static final int oval = 0x7f0f003e;
 		public static final int rect = 0x7f0f003f;
 		public static final int visible = 0x7f0f001b;
@@ -85,7 +85,7 @@ public final class R {
 		public static final int ic_launcher = 0x7f030006;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f08005a;
+		public static final int app_name = 0x7f08005b;
 	}
 	public static final class style {
 		public static final int AndroidImageSlider_Attractive_Rect_Blue = 0x7f0b0086;

@@ -168,7 +168,9 @@
         <activity
             android:name=".activity.SearchInputActivity"
             android:parentActivityName=".activity.ProductListActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            >
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -437,7 +439,7 @@
             android:label="@string/title_activity_product_list"
             android:theme="@style/MyMaterialTheme"
             android:screenOrientation="portrait"
-            android:launchMode="singleTop">
+            >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".activity.SearchInputActivity" />

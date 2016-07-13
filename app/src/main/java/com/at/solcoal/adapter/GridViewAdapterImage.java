@@ -125,7 +125,7 @@ public class GridViewAdapterImage extends BaseAdapter
 			clearImageOnClickListener();
 			ImageUri.images.put(imageFilePathList.get(_postion).toString(), AppConstant.Gallery1);
 
-			if (from_.equals("ProductListPage"))
+			if (from_.equals("ProductListActivity"))
 			{
 				startProductAddProductActivity();
 			}
