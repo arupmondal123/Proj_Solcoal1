@@ -451,6 +451,16 @@
                 android:name="android.app.default_searchable"
                 android:value=".activity.SearchInputActivity" />
         </activity>
+        <activity
+            android:name="com.at.solcoal.activity.UserProfileActivity"
+            android:label="@string/title_activity_user_profile"
+            android:theme="@style/MyMaterialTheme" >
+        </activity>
+        <activity
+            android:name="com.at.solcoal.activity.AddStoreActivity"
+            android:label="@string/title_activity_add_store"
+            android:theme="@style/MyMaterialTheme" >
+        </activity>
     </application>
 
 </manifest>

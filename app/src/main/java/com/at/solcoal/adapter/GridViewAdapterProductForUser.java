@@ -63,6 +63,7 @@ public class GridViewAdapterProductForUser extends BaseAdapter
 		HFU viewHolder = null;
 		if (convertView == null)
 		{
+			//convertView = LayoutInflater.from(context).inflate(R.layout.single_product_view, null);
 			convertView = LayoutInflater.from(context).inflate(R.layout.single_product_view, null);
 			viewHolder = new HFU();
 			viewHolder.l_layout = (LinearLayout) convertView.findViewById(R.id.l_layout);

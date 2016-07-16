@@ -425,8 +425,8 @@ public class UserProductList extends Activity
 	private void initializeGridLayout()
 	{
 		int NUM_OF_COLUMNS = 2; // Number of columns of Grid View
-		int GRID_PADDING1 = 1; // Gridview image padding in dp
-		int GRID_PADDING2 = 8; // Gridview image padding in dp
+		int GRID_PADDING1 = 12; // Gridview image padding in dp
+		int GRID_PADDING2 = 12; // Gridview image padding in dp
 		float padding1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, GRID_PADDING1,
 				getResources().getDisplayMetrics());
 		float padding2 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, GRID_PADDING2,

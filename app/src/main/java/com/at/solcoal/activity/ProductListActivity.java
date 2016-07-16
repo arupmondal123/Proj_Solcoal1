@@ -893,7 +893,7 @@ public class ProductListActivity extends AppCompatActivity   {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        Toast.showSmallToast(context, "Entered onActivityResult");
+        //Toast.showSmallToast(context, "Entered onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAPTURE_IMAGE)
         {
@@ -963,7 +963,8 @@ public class ProductListActivity extends AppCompatActivity   {
 
     private void browseUserProduct()
     {
-        Intent intent = new Intent(ProductListActivity.this, UserProductList.class);
+        //Intent intent = new Intent(ProductListActivity.this, UserProductList.class);
+        Intent intent = new Intent(ProductListActivity.this, UserProfileActivity.class);
         intent.putExtra("userInfo", userInfo);
         startActivity(intent);
     }

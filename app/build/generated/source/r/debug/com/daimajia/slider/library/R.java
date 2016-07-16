@@ -8,16 +8,16 @@ package com.daimajia.slider.library;
 
 public final class R {
 	public static final class attr {
-		public static final int PagerIndicatorStyle = 0x7f01014a;
-		public static final int SliderStyle = 0x7f010149;
-		public static final int auto_cycle = 0x7f0100ba;
-		public static final int indicator_visibility = 0x7f0100b9;
+		public static final int PagerIndicatorStyle = 0x7f010151;
+		public static final int SliderStyle = 0x7f010150;
+		public static final int auto_cycle = 0x7f0100c1;
+		public static final int indicator_visibility = 0x7f0100c0;
 		public static final int padding_bottom = 0x7f01009b;
 		public static final int padding_left = 0x7f010098;
 		public static final int padding_right = 0x7f010099;
 		public static final int padding_top = 0x7f01009a;
-		public static final int pager_animation = 0x7f0100bb;
-		public static final int pager_animation_span = 0x7f0100bc;
+		public static final int pager_animation = 0x7f0100c2;
+		public static final int pager_animation_span = 0x7f0100c3;
 		public static final int selected_color = 0x7f010090;
 		public static final int selected_drawable = 0x7f010092;
 		public static final int selected_height = 0x7f010095;
@@ -38,48 +38,48 @@ public final class R {
 		public static final int visibility = 0x7f01008e;
 	}
 	public static final class drawable {
-		public static final int ic_launcher = 0x7f0200ef;
-		public static final int indicator_corner_bg = 0x7f0200fb;
+		public static final int ic_launcher = 0x7f0200f6;
+		public static final int indicator_corner_bg = 0x7f020104;
 	}
 	public static final class id {
-		public static final int Accordion = 0x7f0f0040;
-		public static final int Background2Foreground = 0x7f0f0041;
-		public static final int CubeIn = 0x7f0f0042;
-		public static final int Default = 0x7f0f0043;
-		public static final int DepthPage = 0x7f0f0044;
-		public static final int Fade = 0x7f0f0045;
-		public static final int FlipHorizontal = 0x7f0f0046;
-		public static final int FlipPage = 0x7f0f0047;
-		public static final int Foreground2Background = 0x7f0f0048;
-		public static final int RotateDown = 0x7f0f0049;
-		public static final int RotateUp = 0x7f0f004a;
-		public static final int Stack = 0x7f0f004b;
-		public static final int Tablet = 0x7f0f004c;
-		public static final int ZoomIn = 0x7f0f004d;
-		public static final int ZoomOut = 0x7f0f004e;
-		public static final int ZoomOutSlide = 0x7f0f004f;
-		public static final int daimajia_indicator_wrapper = 0x7f0f0194;
-		public static final int daimajia_slider_image = 0x7f0f020f;
-		public static final int daimajia_slider_viewpager = 0x7f0f0215;
-		public static final int default_bottom_left_indicator = 0x7f0f0218;
-		public static final int default_bottom_right_indicator = 0x7f0f0217;
-		public static final int default_center_bottom_indicator = 0x7f0f0216;
-		public static final int default_center_top_indicator = 0x7f0f0219;
-		public static final int default_center_top_left_indicator = 0x7f0f021b;
-		public static final int default_center_top_right_indicator = 0x7f0f021a;
-		public static final int description = 0x7f0f0212;
-		public static final int description_layout = 0x7f0f0211;
+		public static final int Accordion = 0x7f0f0042;
+		public static final int Background2Foreground = 0x7f0f0043;
+		public static final int CubeIn = 0x7f0f0044;
+		public static final int Default = 0x7f0f0045;
+		public static final int DepthPage = 0x7f0f0046;
+		public static final int Fade = 0x7f0f0047;
+		public static final int FlipHorizontal = 0x7f0f0048;
+		public static final int FlipPage = 0x7f0f0049;
+		public static final int Foreground2Background = 0x7f0f004a;
+		public static final int RotateDown = 0x7f0f004b;
+		public static final int RotateUp = 0x7f0f004c;
+		public static final int Stack = 0x7f0f004d;
+		public static final int Tablet = 0x7f0f004e;
+		public static final int ZoomIn = 0x7f0f004f;
+		public static final int ZoomOut = 0x7f0f0050;
+		public static final int ZoomOutSlide = 0x7f0f0051;
+		public static final int daimajia_indicator_wrapper = 0x7f0f01a5;
+		public static final int daimajia_slider_image = 0x7f0f0221;
+		public static final int daimajia_slider_viewpager = 0x7f0f0227;
+		public static final int default_bottom_left_indicator = 0x7f0f022a;
+		public static final int default_bottom_right_indicator = 0x7f0f0229;
+		public static final int default_center_bottom_indicator = 0x7f0f0228;
+		public static final int default_center_top_indicator = 0x7f0f022b;
+		public static final int default_center_top_left_indicator = 0x7f0f022d;
+		public static final int default_center_top_right_indicator = 0x7f0f022c;
+		public static final int description = 0x7f0f0224;
+		public static final int description_layout = 0x7f0f0223;
 		public static final int invisible = 0x7f0f001a;
-		public static final int loading_bar = 0x7f0f0210;
+		public static final int loading_bar = 0x7f0f0222;
 		public static final int oval = 0x7f0f003e;
 		public static final int rect = 0x7f0f003f;
 		public static final int visible = 0x7f0f001b;
 	}
 	public static final class layout {
-		public static final int indicator_layout = 0x7f040075;
-		public static final int render_type_default = 0x7f04009c;
-		public static final int render_type_text = 0x7f04009d;
-		public static final int slider_layout = 0x7f0400a3;
+		public static final int indicator_layout = 0x7f04007a;
+		public static final int render_type_default = 0x7f0400a2;
+		public static final int render_type_text = 0x7f0400a3;
+		public static final int slider_layout = 0x7f0400a9;
 	}
 	public static final class mipmap {
 		public static final int ic_launcher = 0x7f030006;
@@ -117,12 +117,12 @@ public final class R {
 		public static final int PagerIndicator_unselected_padding_top = 20;
 		public static final int PagerIndicator_unselected_width = 8;
 		public static final int PagerIndicator_visibility = 0;
-		public static final int[] SliderLayout = { 0x7f0100b9, 0x7f0100ba, 0x7f0100bb, 0x7f0100bc };
+		public static final int[] SliderLayout = { 0x7f0100c0, 0x7f0100c1, 0x7f0100c2, 0x7f0100c3 };
 		public static final int SliderLayout_auto_cycle = 1;
 		public static final int SliderLayout_indicator_visibility = 0;
 		public static final int SliderLayout_pager_animation = 2;
 		public static final int SliderLayout_pager_animation_span = 3;
-		public static final int[] Themes = { 0x7f010149, 0x7f01014a };
+		public static final int[] Themes = { 0x7f010150, 0x7f010151 };
 		public static final int Themes_PagerIndicatorStyle = 1;
 		public static final int Themes_SliderStyle = 0;
 	}

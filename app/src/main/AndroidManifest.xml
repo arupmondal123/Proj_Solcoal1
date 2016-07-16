@@ -169,8 +169,8 @@
             android:name=".activity.SearchInputActivity"
             android:parentActivityName=".activity.ProductListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme"
-            >
+            android:theme="@style/MyMaterialTheme" >
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -178,11 +178,12 @@
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
+
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
 
         <!--
@@ -196,7 +197,6 @@
         <activity
             android:name=".activity.EditProfileActivity___"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.SplashActivity"
             android:label="DrGrep"
@@ -437,13 +437,21 @@
         <activity
             android:name=".activity.ProductListActivity"
             android:label="@string/title_activity_product_list"
-            android:theme="@style/MyMaterialTheme"
             android:screenOrientation="portrait"
-            >
+            android:theme="@style/MyMaterialTheme" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".activity.SearchInputActivity" />
-
+        </activity>
+        <activity
+            android:name=".activity.UserProfileActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:label="@string/title_activity_user_profile" >
+        </activity>
+        <activity
+            android:name=".activity.AddStoreActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:label="@string/title_activity_add_store" >
         </activity>
     </application>
 

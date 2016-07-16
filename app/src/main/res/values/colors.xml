@@ -75,6 +75,7 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
     <item name="header_color" type="color">@color/applozic_theme_color_primary</item>
+    <item name="profile_systembar_color" type="color">#ebca0707</item>
 
 
 

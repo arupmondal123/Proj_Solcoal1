@@ -2,25 +2,95 @@
 <items version="2" >
 
     <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\bolts-android-1.1.2.jar"
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicomkit\unspecified\jars\libs\org.eclipse.paho.android.service-1.0.2.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-0bf8406a4ccfc3318685f99dce1ec445f05a4006.jar" />
+        sha1="442f81337cb942a855ab20a4a16bfe43adb612c7">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\org.eclipse.paho.android.service-1.0.2-596e5d3754d550b2313ca2ac0ebbf5e3799ada8e.jar" />
     </item>
     <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\android-async-http-1.4.6.jar"
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.6-347d3e83b6b0b34e0145f2e9ddef1fe1bc10fed3.jar" />
+        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-2329b7c6f784d8164536384e13f9447ca31de225.jar" />
     </item>
     <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\jars\classes.jar"
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\lib_ImageSlidingLibrary2_picasso_233\unspecified\jars\libs\NineOldAndroid-2.4.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-1f6273de88e4273b726c0a39076f08f4300a6c3c.jar" />
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\NineOldAndroid-2.4.0-f67f6432930b84b52037922d04a621ab1d8df112.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\sinch-android-rtc-3.9.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2a34c88d2786ce2c14a6d7ee235a64d4c5310152">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\sinch-android-rtc-3.9.3-12fc2b6760ab121d7deacd15cba5aaa149c0e7af.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.skyfishjy.ripplebackground\library\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5a7cf2a41aedccc427107ebb37762a5e2f5be590">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-80e9faadc04baf6743b6a83aa1d9f969bf2b41d7.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-124f302b671bddae38c6a9681997d075ba14238d.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-570dd7b28374a1909b65983a0b83a6cc3997ce31.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\android-smart-image-view-1.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d76ea8c3e9a60101244d6d04aff8cc75888570f0">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\android-smart-image-view-1.0.0-2a2f9fc30f3a2b25a9187c6632f603e235cb0bfb.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-6bd15ee178a0bb807cd2ac173c5ac0f61fc961c0.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-3c142a1faf8c48524ccafc922aed433c605c04af.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\http-core-4.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1bf8391d59bf37ddf2aa51aa90467afd0388bc2c">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\http-core-4.1-987a83004f7527f7fe6eff59e72e91ff73f93ad7.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-8807ff39b4adc49ee2661247790ca6dccdc15f8c.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.github.justzak\dilatingdotsprogressbar\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5a915b81ccabe1e634091a8728c71a7e9f8105fb">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-671e1fb4c053e18cf604e0b95f3a4b140f6679c8.jar" />
     </item>
     <item
         jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\Lib_FacebookSDK\unspecified\jars\classes.jar"
@@ -37,165 +107,11 @@
         <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\httpclient-4.2-7030523b1b411c80077ee508005a5bb688f407d4.jar" />
     </item>
     <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.github.justzak\dilatingdotsprogressbar\1.0.1\jars\classes.jar"
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="5a915b81ccabe1e634091a8728c71a7e9f8105fb">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-671e1fb4c053e18cf604e0b95f3a4b140f6679c8.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\lib_ImageSlidingLibrary2_picasso_233\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="85f7c3414c838b7500209db819d54f98818a8ee6">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-c0a2fb288e61afc64436c5a6639841403d03f424.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\sinch-android-rtc-3.9.3.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="2a34c88d2786ce2c14a6d7ee235a64d4c5310152">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\sinch-android-rtc-3.9.3-12fc2b6760ab121d7deacd15cba5aaa149c0e7af.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\android-smart-image-view-1.0.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d76ea8c3e9a60101244d6d04aff8cc75888570f0">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\android-smart-image-view-1.0.0-2a2f9fc30f3a2b25a9187c6632f603e235cb0bfb.jar" />
-    </item>
-    <item
-        jar="C:\Users\Arup\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\gson-2.2.4-80fa7057414d4ca8231fd4c8c04752e0c1d9964d.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicomkit\unspecified\jars\libs\org.eclipse.paho.android.service-1.0.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="442f81337cb942a855ab20a4a16bfe43adb612c7">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\org.eclipse.paho.android.service-1.0.2-596e5d3754d550b2313ca2ac0ebbf5e3799ada8e.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-124f302b671bddae38c6a9681997d075ba14238d.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-8fd7e88ca37b9c17065a7fbe0ea98b3407cef053.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-8807ff39b4adc49ee2661247790ca6dccdc15f8c.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-6bd15ee178a0bb807cd2ac173c5ac0f61fc961c0.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicomkit\unspecified\jars\libs\org.eclipse.paho.client.mqttv3-1.0.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="11752d3f24d1a9deda4533a7ca18d8496417ceeb">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\org.eclipse.paho.client.mqttv3-1.0.2-6d79234c5d29b8d462ff1a834993d045cd2666f5.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-2329b7c6f784d8164536384e13f9447ca31de225.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\lib_ImageSlidingLibrary2_picasso_233\unspecified\jars\libs\picasso-2.3.3.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1262995965440e28ba5c4d480c9c9ab4ccce84cc">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\picasso-2.3.3-6a28fc5b869ef9a167007a72bc7605db2781bf98.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-cecd381472ddb89f410177169f983caf8b0c6f3e.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-80130ef84dcba6d51e1ae59cb494c554e11ae5a5.jar" />
-    </item>
-    <item
-        jar="C:\Users\Arup\.gradle\caches\modules-2\files-2.1\com.googlecode.libphonenumber\libphonenumber\7.0.1\5882a8e1326a4eca13417c40122a9fdb220ed26b\libphonenumber-7.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5882a8e1326a4eca13417c40122a9fdb220ed26b">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\libphonenumber-7.0.1-d9b3c8b46b6f073a43de4dbfbb90919f687d51f6.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicomkit\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="53073978f953685767a5f3c019c0e347d367bc22">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-3df4ec85afbe3419ff792794edc7444462f8779a.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-7607ab5e990ffab0e78f37095bda09df0915aee9.jar" />
-    </item>
-    <item
-        jar="F:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-c0544383c3e9e15cb6d54b92aad3c1a9d83e7682.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\http-core-4.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1bf8391d59bf37ddf2aa51aa90467afd0388bc2c">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\http-core-4.1-987a83004f7527f7fe6eff59e72e91ff73f93ad7.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicommons\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="65213a0d8ce45ce3040db4e87b4f5e72cf20c19f">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-778e893c7e6feadc286c625501818623612383ab.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\lib_ImageSlidingLibrary2_picasso_233\unspecified\jars\libs\NineOldAndroid-2.4.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\NineOldAndroid-2.4.0-f67f6432930b84b52037922d04a621ab1d8df112.jar" />
-    </item>
-    <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-570dd7b28374a1909b65983a0b83a6cc3997ce31.jar" />
+        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-1f6273de88e4273b726c0a39076f08f4300a6c3c.jar" />
     </item>
     <item
         jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\jars\classes.jar"
@@ -205,6 +121,13 @@
         <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-31320022b582955864a5fcb09e17d7ef396d6b9d.jar" />
     </item>
     <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.lsjwzh\materialloadingprogressbar\0.5.8-RELEASE\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="02a43b4e0f1fc04fd60a3de8f6d5015d93703b3e">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-9974d2d7d2abe519d5c2b13ee4e75b4581149924.jar" />
+    </item>
+    <item
         jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicomkitui\unspecified\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -212,18 +135,109 @@
         <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-d0fd1caa653b30d5d269caf0192d218f4c1eac23.jar" />
     </item>
     <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.8.0\jars\classes.jar"
+        jar="C:\Users\Arup\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-3c142a1faf8c48524ccafc922aed433c605c04af.jar" />
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\gson-2.2.4-80fa7057414d4ca8231fd4c8c04752e0c1d9964d.jar" />
     </item>
     <item
-        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.lsjwzh\materialloadingprogressbar\0.5.8-RELEASE\jars\classes.jar"
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="02a43b4e0f1fc04fd60a3de8f6d5015d93703b3e">
-        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-9974d2d7d2abe519d5c2b13ee4e75b4581149924.jar" />
+        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-7607ab5e990ffab0e78f37095bda09df0915aee9.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicomkit\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="53073978f953685767a5f3c019c0e347d367bc22">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-3df4ec85afbe3419ff792794edc7444462f8779a.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\lib_ImageSlidingLibrary2_picasso_233\unspecified\jars\libs\picasso-2.3.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1262995965440e28ba5c4d480c9c9ab4ccce84cc">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\picasso-2.3.3-6a28fc5b869ef9a167007a72bc7605db2781bf98.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\lib_ImageSlidingLibrary2_picasso_233\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="85f7c3414c838b7500209db819d54f98818a8ee6">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-c0a2fb288e61afc64436c5a6639841403d03f424.jar" />
+    </item>
+    <item
+        jar="C:\Users\Arup\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.6.0\a7537446a030da8eb0da4c71424d16c2589f6c4a\glide-3.6.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\glide-3.6.0-55f83ac8a7d8d5588571bc1ac7ad6808c81728a8.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicommons\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="65213a0d8ce45ce3040db4e87b4f5e72cf20c19f">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-778e893c7e6feadc286c625501818623612383ab.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-8fd7e88ca37b9c17065a7fbe0ea98b3407cef053.jar" />
+    </item>
+    <item
+        jar="C:\Users\Arup\.gradle\caches\modules-2\files-2.1\com.googlecode.libphonenumber\libphonenumber\7.0.1\5882a8e1326a4eca13417c40122a9fdb220ed26b\libphonenumber-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5882a8e1326a4eca13417c40122a9fdb220ed26b">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\libphonenumber-7.0.1-d9b3c8b46b6f073a43de4dbfbb90919f687d51f6.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\android-async-http-1.4.6.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.6-347d3e83b6b0b34e0145f2e9ddef1fe1bc10fed3.jar" />
+    </item>
+    <item
+        jar="F:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-c0544383c3e9e15cb6d54b92aad3c1a9d83e7682.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\Proj_Solcoal1\mobicomkit\unspecified\jars\libs\org.eclipse.paho.client.mqttv3-1.0.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="11752d3f24d1a9deda4533a7ca18d8496417ceeb">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\org.eclipse.paho.client.mqttv3-1.0.2-6d79234c5d29b8d462ff1a834993d045cd2666f5.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-80130ef84dcba6d51e1ae59cb494c554e11ae5a5.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\classes-cecd381472ddb89f410177169f983caf8b0c6f3e.jar" />
+    </item>
+    <item
+        jar="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\libs\bolts-android-1.1.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-0bf8406a4ccfc3318685f99dce1ec445f05a4006.jar" />
     </item>
 
 </items>
