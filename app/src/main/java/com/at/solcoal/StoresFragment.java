@@ -2,128 +2,188 @@ package com.at.solcoal;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.at.solcoal.activity.Cheeses;
+import com.at.solcoal.adapter.MyRecyclerAdapter;
+import com.at.solcoal.constants.AppConstant;
+import com.at.solcoal.data.FeedItem;
+import com.at.solcoal.data.ProductConciseList;
+import com.at.solcoal.model.Product_Concise;
+import com.at.solcoal.model.UserInfo;
+import com.at.solcoal.utility.SharedPreferenceUtility;
 import com.bumptech.glide.Glide;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
 public class StoresFragment extends Fragment {
+
+    private List<FeedItem> feedItemList = new ArrayList<FeedItem>();
+
+    private RecyclerView mRecyclerView;
+
+    private MyRecyclerAdapter adapter;
+    private UserInfo userInfo				= null;
+    private CircleProgressBar progress1;
+    private String							ownerId					= null;
+    private List<FeedItem> feedsList;
+    private RecyclerView rv;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        RecyclerView rv = (RecyclerView) inflater.inflate(
+        rv = (RecyclerView) inflater.inflate(
                 R.layout.fragment_stores, container, false);
         setupRecyclerView(rv);
+        //rv.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
+        //rv.getItemAnimator().setMoveDuration(1000);
+        userInfo = SharedPreferenceUtility.getUserInfo(getActivity());
+        ownerId = getActivity().getIntent().getStringExtra("owner_id");
+        //fetchShopList(userInfo.getId());
         return rv;
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),
-                getRandomSublist(Cheeses.sCheeseStrings, 30)));
+        /*recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),
+                getRandomSublist(Cheeses.sCheeseStrings, 30)));*/
     }
 
-    private List<String> getRandomSublist(String[] array, int amount) {
-        ArrayList<String> list = new ArrayList<>(amount);
-        Random random = new Random();
-        while (list.size() < amount) {
-            list.add(array[random.nextInt(array.length)]);
+    @Override
+    public void onResume() {
+        super.onResume();
+        //adapter.notifyDataSetChanged();
+        fetchShopList(userInfo.getId());
+    }
+
+    private void fetchShopList(String userIdStr)
+    {
+        /*ProductConciseList.clearForUser();
+        gridView = (GridView) findViewById(R.id.grid_view_upl);
+        initializeGridLayout();
+        progressDialog = new ProgressDialog(getContext(), R.style.ProgressDialogTheme);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Large);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();*/
+        com.at.solcoal.web.AsyncWebClient asyncWebClient = new com.at.solcoal.web.AsyncWebClient();
+        asyncWebClient.SetUrl(AppConstant.URL);
+        RequestParams reqParam = new RequestParams();
+        reqParam.add("action", "shop_get_by_user");
+        if (ownerId != null)
+        {
+            reqParam.add("user_id", ownerId);
         }
-        return list;
-    }
+        else
+        {
+            reqParam.add("user_id", userIdStr);
+        }
 
-    public static class SimpleStringRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleStringRecyclerViewAdapter.ViewHolder> {
 
-        private final TypedValue mTypedValue = new TypedValue();
-        private int mBackground;
-        private List<String> mValues;
+        asyncWebClient.post(reqParam, new JsonHttpResponseHandler() {
+            @SuppressWarnings("unchecked")
+            @Override
+            public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject jsr) {
+                try {
+                    String responseCode = jsr.getString("response_code");
+                    if (responseCode.equals("1")) {
+                        JSONArray pArray = jsr.getJSONArray("data");
+                        int l = pArray.length();
+                        feedsList = new ArrayList<>();
+                        //Log.e("MyRecyclerAdapter", "array count="+l);
+                        if (l > 0) {
+                            JSONObject obj = null;
+                            String shop_name = "";
+                            String shop_id = "";
+                            String shop_desc = "";
+                            String shop_contact_email = "";
+                            String shop_phone_no = "";
 
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-            public String mBoundString;
+                            for (int i = 0; i < l; i++) {
+                                obj = pArray.getJSONObject(i);
+                                try {
+                                    shop_name = obj.getString("shop_name");
+                                    shop_id = obj.getString("shop_id");
+                                    shop_desc = obj.getString("shop_desc");
+                                    shop_contact_email = obj.getString("shop_contact_email");
+                                    shop_phone_no = obj.getString("shop_phone_no");
 
-            public final View mView;
-            public final ImageView mImageView;
-            public final TextView mTextView;
+                                    //com.at.solcoal.utility.Toast.showSmallToast(getContext(), shop_name);
+                                    FeedItem item = new FeedItem();
+                                    item.setTitle(shop_name);
+                                    item.setShop_id(shop_id);
+                                    item.setShop_desc(shop_desc);
+                                    item.setShop_contact_email(shop_contact_email);
+                                    item.setShop_phone_no(shop_phone_no);
 
-            public ViewHolder(View view) {
-                super(view);
-                mView = view;
-                mImageView = (ImageView) view.findViewById(R.id.avatar);
-                mTextView = (TextView) view.findViewById(android.R.id.text1);
+                                    feedsList.add(item);
+                                } catch (Exception e) {
+                                    shop_name = "";
+                                }
+
+                            }
+                            if (feedsList.size() > 0) {
+                                adapter = new MyRecyclerAdapter(getActivity(), feedsList);
+                                rv.setAdapter(adapter);
+
+                            } else {
+                                com.at.solcoal.utility.Toast.showSmallToast(getContext(), "No Data found.");
+                            }
+                        } else {
+                            com.at.solcoal.utility.Toast.showSmallToast(getContext(), "No Data found.");
+                        }
+                    } else {
+                        com.at.solcoal.utility.Toast.showSmallToast(getContext(), "Error!!!");
+                        //progressDialog.dismiss();
+                    }
+                } catch (JSONException e) {
+                    Log.e("errr", e.getMessage());
+                } finally {
+                    //progressDialog.dismiss();
+                }
             }
+
+
 
             @Override
-            public String toString() {
-                return super.toString() + " '" + mTextView.getText();
+            public void onFailure(int statusCode, org.apache.http.Header[] headers, String responseString,
+                                  Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                //progressDialog.dismiss();
+                com.at.solcoal.utility.Toast.showNetworkErrorMsgToast(getContext());
             }
-        }
 
-        public String getValueAt(int position) {
-            return mValues.get(position);
-        }
-
-        public SimpleStringRecyclerViewAdapter(Context context, List<String> items) {
-            context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
-            mBackground = mTypedValue.resourceId;
-            mValues = items;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_item_new, parent, false);
-            view.setBackgroundResource(mBackground);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mBoundString = mValues.get(position);
-            holder.mTextView.setText(mValues.get(position));
-
-            /*
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, CheeseDetailActivity.class);
-                    intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mBoundString);
-
-                    context.startActivity(intent);
-                }
-            });
-
-            Glide.with(holder.mImageView.getContext())
-                    .load(Cheeses.getRandomCheeseDrawable())
-                    .fitCenter()
-                    .into(holder.mImageView);
-        */
-        }
-
-        @Override
-        public int getItemCount() {
-            return mValues.size();
-        }
+            ;
+        });
     }
 
 }

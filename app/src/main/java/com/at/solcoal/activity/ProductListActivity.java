@@ -12,12 +12,14 @@ import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -77,47 +79,47 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 
-public class ProductListActivity extends AppCompatActivity   {
+public class ProductListActivity extends AppCompatActivity {
 
-    private Context context					= null;
+    private Context context = null;
 
-    private Activity				activity				= null;
+    private Activity activity = null;
 
-    private String					TAG;
+    private String TAG;
 
-    private LinearLayout profile					= null;
+    private LinearLayout profile = null;
 
-    private TextView user_location			= null;
+    private TextView user_location = null;
 
-    private GridView gridView				= null;
+    private GridView gridView = null;
 
-    private int						imageWidth;
+    private int imageWidth;
 
-    private ProgressDialog progressDialog			= null;
+    private ProgressDialog progressDialog = null;
 
-    private GridViewAdapterProduct productGridViewAdapter	= null;
+    private GridViewAdapterProduct productGridViewAdapter = null;
     // private ArrayList<Product_Concise> productConciseList = new
     // ArrayList<Product_Concise>();
 
     /* change */
-    private SlidingDrawer slidingDrawer			= null;
+    private SlidingDrawer slidingDrawer = null;
 
-    private ImageView handle_image			= null;
+    private ImageView handle_image = null;
 
     private UserInfo userInfo;
 
-    private Intent intentLogout			= null;
+    private Intent intentLogout = null;
 
-    private SharedPreferences sharedpreferences		= null;
+    private SharedPreferences sharedpreferences = null;
 
-    private String					response_code;
+    private String response_code;
 
-    private String					response_message;
+    private String response_message;
 
-    private boolean					dataRetrieved;
+    private boolean dataRetrieved;
 
-    private String					userIdStr;
-    private  int                    backButtonCount = 0;
+    private String userIdStr;
+    private int backButtonCount = 0;
 
     SearchView search;
 
@@ -129,7 +131,7 @@ public class ProductListActivity extends AppCompatActivity   {
 
     private DilatingDotsProgressBar mDilatingDotsProgressBar = null;
     private CircleProgressBar progress1;
-    private Boolean layoutRefresh ;
+    private Boolean layoutRefresh;
 
 
     private DrawerLayout mDrawer;
@@ -138,11 +140,16 @@ public class ProductListActivity extends AppCompatActivity   {
     private Toolbar toolbar;
     private ActionBarDrawerToggle drawerToggle;
     private MenuItem searchMenuItem;
-
-
+    private boolean showShopgroup = false;
+    private LinearLayout name_initial_layout;
+    private TextView sign_in_register_tv;
+    private TextView username;
+    private String user_has_shops = "no";
+    private View headerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_product_list);
 
@@ -155,10 +162,28 @@ public class ProductListActivity extends AppCompatActivity   {
         nvDrawer = (NavigationView) findViewById(R.id.nvView);
 
         // Setup drawer view
+
         setupDrawerContent(nvDrawer);
 
-        drawerToggle = setupDrawerToggle();
+        //drawerToggle = setupDrawerToggle();
 
+        drawerToggle = new ActionBarDrawerToggle(
+                this,
+                mDrawer,
+                toolbar,
+                R.string.drawer_open,
+                R.string.drawer_close
+        ) {
+            public void onDrawerClosed(View view) {
+                //getSupportActionBar().setTitle(mTitle);
+                invalidateOptionsMenu();
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                //getActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu();
+            }
+        };
 
         // Tie DrawerLayout events to the ActionBarToggle
         mDrawer.setDrawerListener(drawerToggle);
@@ -188,6 +213,8 @@ public class ProductListActivity extends AppCompatActivity   {
         try {
             if (getIntent().getExtras().getString(AppConstant.START_APP).equals(AppConstant.START_APP_FIRST_TIME)) {
                 fetchProductConciseListAndSetHeaderAddress();
+
+
             }
         } catch (Exception e) {
             Log.e(TAG + "", "Not First Time.");
@@ -228,12 +255,18 @@ public class ProductListActivity extends AppCompatActivity   {
         });
 
         /*Code to setup Header*/
-        View headerView = nvDrawer.getHeaderView(0);
-        TextView sign_in_register_tv = (TextView) headerView.findViewById(R.id.sign_in_register_tv);
+        headerView = nvDrawer.getHeaderView(0);
+        sign_in_register_tv = (TextView) headerView.findViewById(R.id.sign_in_register_tv);
 
         //RelativeLayout logout = (RelativeLayout) findViewById(R.id.logout);
-        LinearLayout name_initial_layout = (LinearLayout) headerView.findViewById(R.id.name_initial_layout);
+        name_initial_layout = (LinearLayout) headerView.findViewById(R.id.name_initial_layout);
+        setupNavHeader();
+        CheckifShopMenutoShow();
 
+
+    }
+
+    private void setupNavHeader() {
         if (isUserLoggedIn()) {
             String userName = getUserName();
             //Toast.showSmallToast(context, "User Name"+userName);
@@ -256,8 +289,8 @@ public class ProductListActivity extends AppCompatActivity   {
             //logout.setVisibility(View.VISIBLE);
         } else {
             name_initial_layout.setVisibility(View.GONE);
-            ((TextView) headerView.findViewById(R.id.username_tv)).setVisibility(View.GONE);
-
+            username = (TextView) headerView.findViewById(R.id.username_tv);
+            username.setVisibility(View.GONE);
             View.OnClickListener clickL = new View.OnClickListener() {
 
                 @Override
@@ -273,12 +306,17 @@ public class ProductListActivity extends AppCompatActivity   {
 
 
         }
+
+
     }
+
+
     private ActionBarDrawerToggle setupDrawerToggle() {
-        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
+        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open, R.string.drawer_close);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -294,14 +332,16 @@ public class ProductListActivity extends AppCompatActivity   {
 
                         menuItem.setChecked(true);
                         selectDrawerItem(menuItem);
-                        return true;
+                        return false;
                     }
                 });
+
+
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
 
-        switch(menuItem.getItemId()) {
+        switch (menuItem.getItemId()) {
             case R.id.browse_product:
                 linearLayout.setVisibility(View.VISIBLE);
                 break;
@@ -309,18 +349,15 @@ public class ProductListActivity extends AppCompatActivity   {
                 startProductAddProductActivity();
                 break;
             case R.id.my_chats:
-                if (SessionManager.isUserLoggedIn(ProductListActivity.this))
-                {
+                if (SessionManager.isUserLoggedIn(ProductListActivity.this)) {
                     Intent intent = new Intent(ProductListActivity.this, ConversationActivity.class);
-                    if(ApplozicClient.getInstance(ProductListActivity.this).isContextBasedChat()){
-                        intent.putExtra(ConversationUIService.CONTEXT_BASED_CHAT,true);
+                    if (ApplozicClient.getInstance(ProductListActivity.this).isContextBasedChat()) {
+                        intent.putExtra(ConversationUIService.CONTEXT_BASED_CHAT, true);
                     }
                     startActivity(intent);
                     return;
 
-                }
-                else
-                {
+                } else {
                     Intent intent = new Intent(ProductListActivity.this, SigninActivity.class);
                     // TODO
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -341,8 +378,20 @@ public class ProductListActivity extends AppCompatActivity   {
                 Intent intent = new Intent(ProductListActivity.this, InfoActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.myShop:
+                Intent intent2 = new Intent(ProductListActivity.this, UserProfileActivity.class);
+                intent2.putExtra("userInfo", userInfo);
+                intent2.putExtra("fragmentToOpen", "Shop");
+                startActivity(intent2);
+                break;
+            //case R.id.shop_settings:
+                /*
+                Intent intent3 = new Intent(ProductListActivity.this, ShopSettingsActivity.class);
+                intent3.putExtra("userInfo", userInfo);
+                startActivity(intent3);
+                break;*/
             default:
-
+                break;
         }
 
         try {
@@ -366,6 +415,7 @@ public class ProductListActivity extends AppCompatActivity   {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        Log.e(TAG + "_", "onCreateOptionsMenu()");
         getMenuInflater().inflate(R.menu.menu_main, menu);
         SearchView search = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.menu_search));
         // Associate searchable configuration with the SearchView
@@ -405,8 +455,11 @@ public class ProductListActivity extends AppCompatActivity   {
             }
         });
 
+
+
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -442,18 +495,36 @@ public class ProductListActivity extends AppCompatActivity   {
     }
 
 
-
-    public boolean onPrepareOptionsMenu(Menu menu)
-    {
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        Log.e(TAG + "_", "onPrepareOptionsMenu()");
         MenuItem logoutmenu = menu.findItem(R.id.action_Logout);
-        if (isUserLoggedIn())
-        {
+        if (isUserLoggedIn()) {
             logoutmenu.setVisible(true);
-        }
-        else
-        {
+        } else {
             logoutmenu.setVisible(false);
         }
+
+        SharedPreferences sharedpreferences = getSharedPreferences(AppConstant.LOGIN_PREFERENCE, Context.MODE_PRIVATE);
+        if (sharedpreferences != null && (sharedpreferences.getString(AppConstant.LOGIN_PREFERENCE_ID, null) != null)) {
+            user_has_shops = sharedpreferences.getString(AppConstant.USER_HAS_SHOPS, "no");
+            //Toast.showLongToast(ProductListActivity.this,"inside sharedpreferences");
+        }
+        if (user_has_shops.equals("yes")){
+            //Toast.showLongToast(ProductListActivity.this,"user_has_shops"+sharedpreferences.getString(AppConstant.USER_HAS_SHOPS, null));
+
+            Menu drawermenu = nvDrawer.getMenu();
+            //nvDrawer.getMenu().setGroupCheckable(R.id.mnu_shop_group, true, true);
+            //nvDrawer.getMenu().setGroupVisible(R.id.mnu_shop_group, true);
+            //menu.add(R.id.mnu_shop_group, 6, 600, "My shops");
+            //menu.add(R.id.mnu_shop_group, 7, 700, "Shop Settings");
+            drawermenu.setGroupCheckable(R.id.mnu_shop_group, true, true);
+            drawermenu.setGroupVisible(R.id.mnu_shop_group, true);
+        }
+        else {
+            nvDrawer.getMenu().setGroupVisible(R.id.mnu_shop_group, false);
+            //Toast.showSmallToast(ProductListActivity.this, "outside showShopgroup ");
+        }
+
         return true;
     }
 
@@ -502,15 +573,13 @@ public class ProductListActivity extends AppCompatActivity   {
 
     }
 
-    private void fetchProductConciseListAndSetHeaderAddress()
-    {
+    private void fetchProductConciseListAndSetHeaderAddress() {
         fetchProductConciseList();
         //setHeaderAddress();
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
         Log.e(TAG + "_", "onStart()");
         // fetchProductConciseList();
@@ -519,84 +588,76 @@ public class ProductListActivity extends AppCompatActivity   {
 
     /* */
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
-
-        backButtonCount =0;
+        //setupNavHeader();
+        //invalidateOptionsMenu();
+        backButtonCount = 0;
 
         Log.e(TAG + "_", "onResume()");
-        try
-        {
+        try {
             revokeImageOnClickListenerOnProductGridView();
+        } catch (Exception e) {
         }
-        catch (Exception e)
-        {}
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
         Log.e(TAG + "_", "onPause()");
     }
 
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         super.onStop();
         Log.e(TAG + "_", "onStop()");
     }
 
     @Override
-    protected void onRestart()
-    {
+    protected void onRestart() {
         super.onRestart();
+        //invalidateOptionsMenu();
         Log.e(TAG + "_", "onRestart()");
-        try
-        {
+        try {
             revokeImageOnClickListenerOnProductGridView();
+        } catch (Exception e) {
         }
-        catch (Exception e)
-        {}
     }
 
-    private void revokeImageOnClickListenerOnProductGridView()
-    {
-        for (int i = 0; i < GridViewAdapterProductData.imagelist.size(); i++)
-        {
+    private void revokeImageOnClickListenerOnProductGridView() {
+        for (int i = 0; i < GridViewAdapterProductData.imagelist.size(); i++) {
             GridViewAdapterProductData.imagelist.get(i)
                     .setOnClickListener(GridViewAdapterProductData.imageOnImageClickListenerList.get(i));
         }
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
         Log.e(TAG + "_", "onDestroy()");
         SharedPref sharedPref = new SharedPref(context);
         sharedPref.saveUsersLastLatLong(UserLocation.getUserPreferredLatLng().latitude + "",
                 UserLocation.getUserPreferredLatLng().longitude + "");
     }
-/*
-    private void setHeaderAddress()
-    {
-        final int selected = R.drawable.style__2_selected;
-        profile = (LinearLayout) findViewById(R.id.profile);
-        user_location = (TextView) findViewById(R.id.user_location);
-        View.OnClickListener onclick1 = new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                startGoogleMapActivity();
-            }
-        };
-        profile.setOnClickListener(onclick1);
-        // user_location.setOnClickListener(onclick1);
-        setUserLocationText();
-    }
-*/
+
+    /*
+        private void setHeaderAddress()
+        {
+            final int selected = R.drawable.style__2_selected;
+            profile = (LinearLayout) findViewById(R.id.profile);
+            user_location = (TextView) findViewById(R.id.user_location);
+            View.OnClickListener onclick1 = new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    startGoogleMapActivity();
+                }
+            };
+            profile.setOnClickListener(onclick1);
+            // user_location.setOnClickListener(onclick1);
+            setUserLocationText();
+        }
+    */
     /* /change */
 	/*
 	 *
@@ -604,8 +665,7 @@ public class ProductListActivity extends AppCompatActivity   {
 	 *
 	 *
 	 * */
-    public void startGoogleMapActivity()
-    {
+    public void startGoogleMapActivity() {
         Intent intent = new Intent(ProductListActivity.this, GoogleMapActivity.class);
         intent.putExtra(AppConstant.MAP_JOB_TYPE, AppConstant.CHANGE_USER_LOCATION);
         startActivity(intent);
@@ -613,64 +673,49 @@ public class ProductListActivity extends AppCompatActivity   {
 
     }
 
-    private void setUserLocationText()
-    {
-        try
-        {
+    private void setUserLocationText() {
+        try {
             String str = UserLocation.getUserAddress();
             user_location.setText(str);
-            if (str.contains(","))
-            {
+            if (str.contains(",")) {
                 str = str.substring(0, str.indexOf(","));
                 user_location.setText(str);
             }
+        } catch (Exception e) {
         }
-        catch (Exception e)
-        {}
     }
 
-    private void fetchProductConciseList()
-    {
-        if (Network.isConnected(context))
-        {
+    private void fetchProductConciseList() {
+        if (Network.isConnected(context)) {
             fetchProductConciseList(UserLocation.getUserPreferredLatLng().latitude + "",
                     UserLocation.getUserPreferredLatLng().longitude + "");
-        }
-        else
-        {
+        } else {
             Toast.showNetworkErrorMsgToast(context);
         }
     }
 
-    private void setAdaptertoGridView(ArrayList<Product_Concise> productConciseList2)
-    {
+    private void setAdaptertoGridView(ArrayList<Product_Concise> productConciseList2) {
         // adapter = new GridViewAdapterProduct(activity, productConciseList2,
         // imageWidth);
         // gridView.setAdapter(adapter);
     }
 
-    private void setAdaptertoGridView()
-    {
+    private void setAdaptertoGridView() {
 //		productGridViewAdapter = new GridViewAdapterProduct(activity, imageWidth);
-        productGridViewAdapter = new GridViewAdapterProduct(activity, imageWidth,this);
+        productGridViewAdapter = new GridViewAdapterProduct(activity, imageWidth, this);
 
         gridView.setAdapter(productGridViewAdapter);
     }
 
 
-
-    private void clearProductConciseList()
-    {
-        try
-        {
+    private void clearProductConciseList() {
+        try {
             ProductConciseList.productConciseList.clear();
+        } catch (Exception e) {
         }
-        catch (Exception e)
-        {}
     }
 
-    private void fetchProductConciseList(String latitude, String longitude)
-    {
+    private void fetchProductConciseList(String latitude, String longitude) {
         clearProductConciseList();
 
         if (layoutRefresh == false) {
@@ -704,87 +749,61 @@ public class ProductListActivity extends AppCompatActivity   {
         asyncWebClient.post(reqParam, new JsonHttpResponseHandler() {
             @SuppressWarnings("unchecked")
             @Override
-            public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject jsr)
-            {
-                try
-                {
+            public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject jsr) {
+                try {
                     String responseCode = jsr.getString("response_code");
-					/**/ Log.e("response_code", responseCode);
-                    if (responseCode.equals("1"))
-                    {
+					/**/
+                    Log.e("response_code", responseCode);
+                    if (responseCode.equals("1")) {
                         JSONArray pArray = jsr.getJSONArray("data");
                         int l = pArray.length();
-                        if (l > 0)
-                        {
+                        if (l > 0) {
                             JSONObject obj = null;
                             String productId = "";
                             String title = "";
                             String price = "";
                             String link = "";
                             String distance = "";
-                            for (int i = 0; i < l; i++)
-                            {
+                            for (int i = 0; i < l; i++) {
                                 obj = pArray.getJSONObject(i);
-                                try
-                                {
+                                try {
                                     productId = obj.getString("product_id");
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     productId = "";
                                 }
-                                try
-                                {
+                                try {
                                     title = obj.getString("title");
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     title = "";
                                 }
-                                try
-                                {
+                                try {
                                     price = obj.getString("price");
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     price = "";
                                 }
-                                try
-                                {
+                                try {
                                     link = obj.getJSONArray("images").getJSONObject(0).getString("prod_img_link");
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     link = "";
                                 }
-                                try
-                                {
+                                try {
                                     distance = obj.getString("distance");
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     distance = "";
                                 }
                                 ProductConciseList.productConciseList
                                         .add(new Product_Concise(productId, title, price, link, distance));
                             }
-                            if (ProductConciseList.productConciseList.size() > 0)
-                            {
+                            if (ProductConciseList.productConciseList.size() > 0) {
                                 // setAdaptertoGridView(ProductConciseList.productConciseList);
                                 setAdaptertoGridView();
-                            }
-                            else
-                            {
+                            } else {
                                 Toast.showSmallToast(context, "No Data found.");
                             }
-                        }
-                        else
-                        {
+                        } else {
                             Toast.showSmallToast(context, "No Data found.");
                         }
-                    }
-                    else
-                    {
+                    } else {
                         Toast.showSmallToast(context, "Error!!!");
                         //mDilatingDotsProgressBar.hideNow();
                         progress1.setVisibility(View.INVISIBLE);
@@ -792,20 +811,18 @@ public class ProductListActivity extends AppCompatActivity   {
 
                         //progressDialog.dismiss();
                     }
-                }
-                catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     Log.e("errr", e.getMessage());
-                }
-                finally
-                {
+                } finally {
                     //progressDialog.dismiss();
                     progress1.setVisibility(View.INVISIBLE);
                     linearLayout.setVisibility(View.VISIBLE);
                     //mDilatingDotsProgressBar.hideNow();
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
-            };
+            }
+
+            ;
 
             @Override
             public void onFailure(int statusCode, org.apache.http.Header[] headers, String responseString,
@@ -816,36 +833,33 @@ public class ProductListActivity extends AppCompatActivity   {
                 progress1.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
                 Toast.showNetworkErrorMsgToast(context);
-            };
+            }
+
+            ;
         });
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         //super.onBackPressed();
         // clearProductConciseList();
         //ProductListActivity.this.finish();
 
         //android.os.Process.killProcess(android.os.Process.myPid());
         //System.exit(0);
-        if(backButtonCount >= 1)
-        {
+        if (backButtonCount >= 1) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }
-        else
-        {
+        } else {
             Toast.showSmallToast(context, "Press the back button once again to close DrGrep");
             //Toast.makeText(this, "Press the back button once again to close the application.", Toast.LENGTH_SHORT).show();
             backButtonCount++;
         }
     }
 
-    private void InitializeGridLayout()
-    {
+    private void InitializeGridLayout() {
         int NUM_OF_COLUMNS = 2; // Number of columns of Grid View
         int GRID_PADDING1 = 13; // Gridview image padding in dp
         int GRID_PADDING2 = 13; // Gridview image padding in dp
@@ -872,12 +886,11 @@ public class ProductListActivity extends AppCompatActivity   {
     }
 
     /* */
-    private static final int	CAPTURE_IMAGE	= 1;
+    private static final int CAPTURE_IMAGE = 1;
 
-    private Uri imageUri		= null;
+    private Uri imageUri = null;
 
-    private void takePhoto()
-    {
+    private void takePhoto() {
         String fileName = "random1234567.jpg";
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, fileName);
@@ -886,44 +899,36 @@ public class ProductListActivity extends AppCompatActivity   {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
         intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-		/**/ values.clear();
+		/**/
+        values.clear();
         startActivityForResult(intent, CAPTURE_IMAGE);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //Toast.showSmallToast(context, "Entered onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAPTURE_IMAGE)
-        {
+        if (requestCode == CAPTURE_IMAGE) {
             String str = IMAGE_UTIL.getActualFilePathFromTempUri(activity, imageUri);
-            if (resultCode == RESULT_OK)
-            {
+            if (resultCode == RESULT_OK) {
                 ImageUri.images.put(str, AppConstant.Camera);
                 startAddproduct();
-            }
-            else if (resultCode == RESULT_CANCELED)
-            {
+            } else if (resultCode == RESULT_CANCELED) {
                 clearImageUrisAndDeleteBlankFile(str);
                 Toast.showSmallToast(context, getResources().getString(R.string.photo_was_not_taken));
-            }
-            else
-            {
+            } else {
                 clearImageUrisAndDeleteBlankFile(str);
                 Toast.showSmallToast(context, getResources().getString(R.string.photo_was_not_taken));
             }
         }
-        if(requestCode==2)
-        {
-            Toast.showSmallToast(context, "Entered requestcode");
+        if (requestCode == 2) {
+            //Toast.showSmallToast(context, "Entered requestcode");
             linearLayout.setVisibility(View.VISIBLE);
         }
 
     }
 
-    private void startAddproduct()
-    {
+    private void startAddproduct() {
         Intent intent = new Intent(ProductListActivity.this, ProductAddProductActivity.class);
         intent.putExtra(AppConstant.ADD_EDIT, AppConstant.ADD);
         // ProductListActivity.this.finish();
@@ -931,20 +936,14 @@ public class ProductListActivity extends AppCompatActivity   {
         ANIM.onStartActivity(ProductListActivity.this);
     }
 
-    private void clearImageUrisAndDeleteBlankFile(String str)
-    {
-        try
-        {
+    private void clearImageUrisAndDeleteBlankFile(String str) {
+        try {
             ImageUri.images.clear();
+        } catch (Exception e) {
         }
-        catch (Exception e)
-        {}
-        try
-        {
+        try {
             (new File(str)).delete();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e("(new File(str)).delete();", e.getMessage());
         }
     }
@@ -959,28 +958,22 @@ public class ProductListActivity extends AppCompatActivity   {
     @SuppressWarnings("deprecation")
 
 
-
-
-    private void browseUserProduct()
-    {
+    private void browseUserProduct() {
         //Intent intent = new Intent(ProductListActivity.this, UserProductList.class);
         Intent intent = new Intent(ProductListActivity.this, UserProfileActivity.class);
         intent.putExtra("userInfo", userInfo);
+        intent.putExtra("fragmentToOpen", "Inventory");
         startActivity(intent);
     }
 
-    protected void startProductAddProductActivity()
-    {
+    protected void startProductAddProductActivity() {
 
-        if (SessionManager.isUserLoggedIn(ProductListActivity.this))
-        {
+        if (SessionManager.isUserLoggedIn(ProductListActivity.this)) {
             Intent intent = new Intent(ProductListActivity.this, ProductAddPictureActivity.class);
             intent.putExtra("from_", "ProductListActivity");
             startActivity(intent);
 
-        }
-        else
-        {
+        } else {
             Intent intent = new Intent(ProductListActivity.this, SigninActivity.class);
             // TODO
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -990,36 +983,27 @@ public class ProductListActivity extends AppCompatActivity   {
 
     }
 
-    public void closeDrawer()
-    {
-        try
-        {
+    public void closeDrawer() {
+        try {
             slidingDrawer.close();
+        } catch (Exception e) {
         }
-        catch (Exception e)
-        {}
     }
 
-    public boolean isDrawerOpen()
-    {
+    public boolean isDrawerOpen() {
         return mDrawer.isDrawerOpen(GravityCompat.START);
     }
 
-    private void openLoginActivity()
-    {
+    private void openLoginActivity() {
         String user_id;
         SharedPreferences sharedpreferences = getSharedPreferences(AppConstant.LOGIN_PREFERENCE, Context.MODE_PRIVATE);
-        if (sharedpreferences != null && (sharedpreferences.getString(AppConstant.LOGIN_PREFERENCE_ID, null) != null))
-        {
+        if (sharedpreferences != null && (sharedpreferences.getString(AppConstant.LOGIN_PREFERENCE_ID, null) != null)) {
             user_id = sharedpreferences.getString(AppConstant.LOGIN_PREFERENCE_ID, null);
-            if (user_id == null)
-            {
+            if (user_id == null) {
                 Intent intent = new Intent(ProductListActivity.this, SigninActivity.class);
                 intent.putExtra(AppConstant.AFTER_LOGIN_ACTION, "after_login_action");
                 startActivity(intent);
-            }
-            else
-            {
+            } else {
                 Intent chatHoldingActivity = new Intent(this, UserChatEntryHoldingPage.class);
                 chatHoldingActivity.putExtra("userId", user_id);
                 startActivity(chatHoldingActivity);
@@ -1036,58 +1020,47 @@ public class ProductListActivity extends AppCompatActivity   {
     // startActivity(intent);
     // }
 
-    protected void startSignInActivity()
-    {
+    protected void startSignInActivity() {
+
         Intent intent = new Intent(ProductListActivity.this, SigninActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
-    private String getUserName()
-    {
+    private String getUserName() {
         // TODO returns userName
         String userName = "Name";
-        try
-        {
+        try {
             userName = SharedPreferenceUtility.getUserInfo(ProductListActivity.this).getName();
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
         return userName;
     }
 
-    public void afterLoginActivity(String afterLoginAction)
-    {
+    public void afterLoginActivity(String afterLoginAction) {
         SharedPreferences sharedpreferences = getSharedPreferences(AppConstant.LOGIN_PREFERENCE, Context.MODE_PRIVATE);
-        if (sharedpreferences != null)
-        {
+        if (sharedpreferences != null) {
             userIdStr = sharedpreferences.getString(AppConstant.LOGIN_PREFERENCE_ID, null);
-            if (userIdStr == null)
-            {
+            if (userIdStr == null) {
                 Intent intent = new Intent(ProductListActivity.this, SigninActivity.class);
                 intent.putExtra(AppConstant.AFTER_LOGIN_ACTION, afterLoginAction);
                 startActivity(intent);
-            }
-            else
-            {
-                if (AppConstant.AFTER_LOGIN_LIST_PRODUCT.equals(afterLoginAction))
-                {
+            } else {
+                if (AppConstant.AFTER_LOGIN_LIST_PRODUCT.equals(afterLoginAction)) {
                     takePhoto();
                 }
             }
         }
     }
 
-    private boolean isUserLoggedIn()
-    {
+    private boolean isUserLoggedIn() {
         return (null != getSharedPreferences(AppConstant.LOGIN_PREFERENCE, Context.MODE_PRIVATE)
                 .getString(AppConstant.LOGIN_PREFERENCE_ID, null));
     }
 
-    private void signOut()
-    {
+    private void signOut() {
         intentLogout = new Intent(ProductListActivity.this, MainActivity.class);
 
         com.at.solcoal.web.AsyncWebClient asyncWebClient;
@@ -1106,43 +1079,103 @@ public class ProductListActivity extends AppCompatActivity   {
 
         asyncWebClient.post(reqParam, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, org.apache.http.Header[] headers, org.json.JSONObject jsr)
-            {
-                try
-                {
+            public void onSuccess(int statusCode, org.apache.http.Header[] headers, org.json.JSONObject jsr) {
+                try {
                     response_code = jsr.getString("response_code");
                     response_message = jsr.getString("response_message");
-                    if (response_code.equals(AppConstant.DB_OPERATION_SUCCESS))
-                    {
+                    if (response_code.equals(AppConstant.DB_OPERATION_SUCCESS)) {
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.clear();
                         editor.commit();
                     }
-                }
-                catch (Throwable t)
-                {
+                } catch (Throwable t) {
                     t.printStackTrace();
-                }
-                finally
-                {
+                } finally {
                     intentLogout.removeExtra("userInfo");
                     startActivity(intentLogout);
+                    //hide login
+                    //CheckifShopMenutoShow();
+                    //name_initial_layout.setVisibility(View.GONE);
+                    //username.setVisibility(View.GONE);
+                    //sign_in_register_tv.setVisibility(View.VISIBLE);
+                    //Toast.showLongToast(context, "Logged Out Successfully");
+
                 }
-            };
+            }
+
+            ;
 
             @Override
             public void onFailure(int statusCode, org.apache.http.Header[] headers, String responseString,
-                                  Throwable throwable)
-            {
+                                  Throwable throwable) {
                 dataRetrieved = true;
                 super.onFailure(statusCode, headers, responseString, throwable);
                 // dialog.dismiss();
                 // Toast.showNetworkErrorMsgToast(context);
 
-            };
+            }
+
+            ;
         });
     }
 
+
+    private void CheckifShopMenutoShow() {
+
+        if (SessionManager.isUserLoggedIn(ProductListActivity.this)) {
+
+            com.at.solcoal.web.AsyncWebClient asyncWebClient = new com.at.solcoal.web.AsyncWebClient();
+            asyncWebClient.SetUrl(AppConstant.URL);
+            RequestParams reqParam = new RequestParams();
+            userInfo = SharedPreferenceUtility.getUserInfo(ProductListActivity.this);
+            reqParam.add("action", "user_shop_entries_get");
+            reqParam.add("seller_id", userInfo.getId());
+
+            asyncWebClient.post(reqParam, new JsonHttpResponseHandler() {
+                @SuppressWarnings("unchecked")
+                @Override
+                public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject jsr) {
+                    try {
+                        String responseCode = jsr.getString("response_code");
+                        if (responseCode.equals("1")) {
+                            SharedPreferences sharedpreferences = getSharedPreferences(AppConstant.LOGIN_PREFERENCE, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putString(AppConstant.USER_HAS_SHOPS, "yes");
+                            editor.commit();
+                            //invalidateOptionsMenu();
+                            //Toast.showLongToast(ProductListActivity.this, "user_has_shops yes" + sharedpreferences.getString(AppConstant.USER_HAS_SHOPS, null));
+                        } else {
+                            SharedPreferences sharedpreferences = getSharedPreferences(AppConstant.LOGIN_PREFERENCE, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putString(AppConstant.USER_HAS_SHOPS, "no");
+                            editor.commit();
+                            //invalidateOptionsMenu ();
+                        }
+                    } catch (JSONException e) {
+                        //Toast.showSmallToast(ProductListActivity.this, "Error!!!");
+                        Log.e("errr", e.getMessage());
+                    }
+                }
+
+
+                @Override
+                public void onFailure(int statusCode, org.apache.http.Header[] headers, String responseString,
+                                      Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+                    //Toast.showNetworkErrorMsgToast(ProductListActivity.this);
+                }
+            });
+        } else {
+
+            SharedPreferences sharedpreferences = getSharedPreferences(AppConstant.LOGIN_PREFERENCE, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString(AppConstant.USER_HAS_SHOPS, "no");
+            editor.commit();
+        }
+
+
+
+    }
 }
 
 

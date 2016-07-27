@@ -2,8 +2,8 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +17,9 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
@@ -25,12 +28,12 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="60dp">
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/input_layout_shop_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar">
-
         <EditText
             android:id="@+id/input_shop_name"
             android:layout_width="match_parent"
@@ -46,6 +49,9 @@
         <EditText
             android:id="@+id/input_shop_description"
             android:layout_width="match_parent"
+            android:inputType="textMultiLine"
+            android:maxLines="4"
+            android:scrollbars="vertical"
             android:layout_height="wrap_content"
             android:hint="@string/shop_description" />
     </android.support.design.widget.TextInputLayout>
@@ -61,7 +67,47 @@
             android:layout_height="wrap_content"
             android:hint="@string/shop_location" />
     </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_shop_contact_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_layout_shop_location">
+        <EditText
+            android:id="@+id/input_shop_contact_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/shop_email" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_shop_contact_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_layout_shop_location">
+        <EditText
+            android:id="@+id/input_shop_contact_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/shop_phone" />
+    </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_shop_contact_weblink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_layout_shop_contact_phone">
+            <EditText
+                android:id="@+id/input_shop_contact_weblink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/shop_weblink" />
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+        </ScrollView>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

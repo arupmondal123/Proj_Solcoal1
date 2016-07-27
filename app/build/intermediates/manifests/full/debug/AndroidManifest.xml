@@ -461,6 +461,15 @@
             android:label="@string/title_activity_add_store"
             android:theme="@style/MyMaterialTheme" >
         </activity>
+        <activity
+            android:name="com.at.solcoal.activity.ShopSettingsActivity"
+            android:label="@string/title_activity_shop_settings" >
+        </activity>
+        <activity
+            android:name="com.at.solcoal.activity.ShopDetail"
+            android:label="@string/title_activity_shop_detail"
+            android:theme="@style/MyMaterialTheme" >
+        </activity>
     </application>
 
 </manifest>

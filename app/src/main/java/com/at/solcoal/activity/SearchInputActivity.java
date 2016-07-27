@@ -344,7 +344,7 @@ public class SearchInputActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             clearProductConciseList();
-            //mDilatingDotsProgressBar.showNow();
+            //mDilatingDotsProgressBar.showNow(progress1.setVisibility(View.VISIBLE););
 
             progress1.setVisibility(View.VISIBLE);
 

@@ -378,7 +378,11 @@ public class UserLoginInfo extends Activity
 		}
 		else
 		{
+			//UserLoginInfo.this.finish();
+
 			intent = new Intent(UserLoginInfo.this, MainActivity.class);
+			//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 		}
 		com.at.solcoal.web.AsyncWebClient asyncWebClientAdd;
 

@@ -34,21 +34,17 @@
             android:title="@string/infostring" />
     </group>
     <group android:checkableBehavior="single"
-        android:id="@+id/NAV_ITEMS_EXTRA2"
+        android:id="@+id/mnu_shop_group"
+        android:visible="false"
         >
         <item
-            android:id="@+id/myStore"
+            android:id="@+id/myShop"
             android:icon="@drawable/ic_store_black_48dp"
             android:clickable="true"
             android:contextClickable="false"
             android:textColor="@color/white"
             android:itemBackground="@android:color/transparent"
             android:title="@string/my_shop" />
-        <item
-            android:id="@+id/shop_settings"
-            android:icon="@drawable/ic_settings_black_48dp"
-            android:textColor="@color/white"
-            android:title="@string/shop_settings" />
     </group>
 
 </menu>

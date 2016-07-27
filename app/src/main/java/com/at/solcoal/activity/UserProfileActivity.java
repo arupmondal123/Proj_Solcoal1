@@ -1,5 +1,6 @@
 package com.at.solcoal.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Point;
@@ -34,8 +35,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
+import com.at.solcoal.utility.Toast;
 import com.at.solcoal.ProductsFragment;
 import com.at.solcoal.R;
 import com.at.solcoal.StoresFragment;
@@ -60,14 +60,18 @@ public class UserProfileActivity extends AppCompatActivity {
 
     private UserInfo userInfo				= null;
     private String							ownerId					= null;
+    private int							pageSelected				= 0;
+    private String fragmentOpen 				;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         Intent intent = getIntent();
+        fragmentOpen = intent.getStringExtra("fragmentToOpen");
         //final String cheeseName = intent.getStringExtra(EXTRA_NAME);
-
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Toast.showLongToast(UserProfileActivity.this,"fragmentOpen="+fragmentOpen);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -84,16 +88,41 @@ public class UserProfileActivity extends AppCompatActivity {
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("Profie Name");
 */
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+
+
         if (viewPager != null) {
             setupViewPager(viewPager);
         }
 
+
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                pageSelected = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        Window window = UserProfileActivity.this.getWindow();
+        //Window window = UserProfileActivity.this.getWindow();
 
         // clear FLAG_TRANSLUCENT_STATUS flag:
+
+        /*
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
@@ -101,10 +130,13 @@ public class UserProfileActivity extends AppCompatActivity {
 
         window.setStatusBarColor(UserProfileActivity.this.getResources().getColor(R.color.profile_systembar_color));
         //loadBackdrop();
+        */
 
         userInfo = SharedPreferenceUtility.getUserInfo(UserProfileActivity.this);
 
         ownerId = getIntent().getStringExtra("owner_id");
+
+
         if (ownerId != null)
         {
             //fetchOwnerAndProductListDetails();
@@ -139,10 +171,21 @@ public class UserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //startProductAddPictureActivity();
-                startAddStoreActivity();
+
+                if (pageSelected == 0) {
+                    startProductAddPictureActivity();
+                }
+                else{
+                    startAddStoreActivity();
             }
+            }
+
         });
+    }
+
+    public void onBack(View view)
+    {
+        onBackPressed();
     }
 
     @Override
@@ -175,20 +218,33 @@ public class UserProfileActivity extends AppCompatActivity {
 
     protected void startAddStoreActivity()
     {
-        Intent intent = new Intent(UserProfileActivity.this, AddStoreActivity.class);
 
+        Intent intent = new Intent(UserProfileActivity.this, AddStoreActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
-    private void loadBackdrop() {
-        //final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        //Glide.with(this).load(Cheeses.getRandomCheeseDrawable()).centerCrop().into(imageView);
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (fragmentOpen.equals("Shop")) {
+            viewPager.setCurrentItem(1);
+            pageSelected =1;
+        }
+        else{
+            viewPager.setCurrentItem(0);
+            pageSelected = 0;
+        }
+
     }
+
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ProductsFragment(), "Products");
-        adapter.addFragment(new StoresFragment(), "Stores");
+        adapter.addFragment(new ProductsFragment(), "Inventory");
+        adapter.addFragment(new StoresFragment(), "Shops");
         viewPager.setAdapter(adapter);
     }
 

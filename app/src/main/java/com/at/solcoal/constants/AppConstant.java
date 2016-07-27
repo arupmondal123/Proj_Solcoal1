@@ -8,7 +8,12 @@ import com.google.android.gms.maps.model.LatLng;
 public class AppConstant
 {
 	public static final String URL = "http://drgrep.com/drgrep_web/webservice/";
-	
+
+	//public static final String URL = "http://drgrep-staging-731725861.ap-south-1.elb.amazonaws.com/webservice/";
+
+	//new one
+	// static final String URL = "http://ec2-52-66-74-188.ap-south-1.compute.amazonaws.com/drgrep_web/webservice/";
+
 	public static final int PRODUCT_SINGLE_TITLE_CHAR_LIMIT =15; 
 	
 	public static final int GRIDVIEW_COUNT = 30;
@@ -78,7 +83,7 @@ public class AppConstant
 	public static final String LOGIN_PREFERENCE_ID = "login_preference_id";
 	public static final String LOGIN_PREFERENCE_NAME = "login_preference_name";
 	public static final String LOGIN_PREFERENCE_GENDER = "login_preference_gender";
-
+	public static final String USER_HAS_SHOPS = "no";
 
 
 	public static final String AFTER_LOGIN_ACTION = "after_login_action";

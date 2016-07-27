@@ -82,12 +82,17 @@
     <string name="sign_in_register">"Sign In/Register"</string>
     <string name="list_product">"List"</string>
     <string name="browse_product">"Products"</string>
-    <string name="my_shop">"My shop"</string>
+    <string name="my_shop">"My shops"</string>
     <string name="shop_settings">"Shop Settings"</string>
     <string name="my_chats">"My Chats"</string>
     <string name="shop_name">"Name"</string>
     <string name="shop_description">"Description"</string>
     <string name="shop_location">"Location"</string>
+    <string name="shop_email">"Email"</string>
+    <string name="shop_phone">"Phone"</string>
+    <string name="shop_weblink">"Website"</string>
+
+
 
     <string-array name="spinner_item1">
         <item>- Type -</item>
@@ -143,6 +148,8 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_add_store">AddStoreActivity</string>
+    <string name="title_activity_shop_settings">ShopSettingsActivity</string>
+    <string name="title_activity_shop_detail">ShopDetail</string>
 
 
     <!--  -->

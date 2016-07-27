@@ -16,6 +16,7 @@ import com.at.solcoal.sharedpref.SharedPref;
 import com.at.solcoal.utility.ADDRESS;
 import com.at.solcoal.utility.GPS;
 import com.at.solcoal.utility.Network;
+import com.at.solcoal.utility.SessionManager;
 import com.at.solcoal.utility.SharedPreferenceUtility;
 import com.at.solcoal.utility.Toast;
 import com.google.android.gms.common.ConnectionResult;
@@ -26,6 +27,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar;
 
 import android.annotation.TargetApi;
@@ -59,6 +62,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MainActivity extends Activity
@@ -100,6 +106,8 @@ public class MainActivity extends Activity
 	private LocationRequest mLocationRequest1=null;
 
 	private int locationInterval, fastedInterval;
+
+	private String showShopgroup = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -330,12 +338,17 @@ public class MainActivity extends Activity
 		{
 			try
 			{
+
 				HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
 				urlc.setRequestProperty("User-Agent", "Test");
 				urlc.setRequestProperty("Connection", "close");
 				urlc.setConnectTimeout(2000);
 				urlc.connect();
 				return (urlc.getResponseCode() == 200);
+
+
+
+
 			}
 			catch (MalformedURLException e)
 			{
@@ -355,8 +368,7 @@ public class MainActivity extends Activity
 		}
 
 		@Override
-		protected void onPostExecute(Boolean result)
-		{
+		protected void onPostExecute(Boolean result) {
 			super.onPostExecute(result);
 
 
@@ -627,6 +639,7 @@ public class MainActivity extends Activity
 		Intent intent = new Intent(MainActivity.this, ProductListActivity.class);
 		intent.putExtra(AppConstant.START_APP, AppConstant.START_APP_FIRST_TIME);
 		intent.putExtra("userInfo", userInfo);
+		intent.putExtra("Shopgroup", showShopgroup );
 		dialog.dismiss();
 		//MainActivity.this.finish();
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -683,7 +696,7 @@ public class MainActivity extends Activity
 	@Override
 	public void onLocationChanged(Location location)
 	{
-		setUserLocationAndStartLandingPage(location.getLatitude(), location.getLongitude());
+		//setUserLocationAndStartLandingPage(location.getLatitude(), location.getLongitude());
 		Log.e(TAG + "_LocationListener_onLocationChanged()", "onLocationChanged()");
 	}
 /*
@@ -738,4 +751,7 @@ public class MainActivity extends Activity
 		}
 	}
 */
+
+
+
 }

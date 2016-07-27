@@ -21,6 +21,7 @@ public class SharedPreferenceUtility {
             userInfo.setExtId(sharedpreferences.getString(AppConstant.LOGIN_PREFERENCE_EXT_ID, null));
             userInfo.setGender(sharedpreferences.getString(AppConstant.LOGIN_PREFERENCE_GENDER, null));
             userInfo.setExtSource(sharedpreferences.getString(AppConstant.LOGIN_PREFERENCE_SOURCE, null));
+
         }
         return userInfo;
     }
