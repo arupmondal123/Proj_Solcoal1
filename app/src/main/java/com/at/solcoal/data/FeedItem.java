@@ -7,6 +7,30 @@ public class FeedItem {
     private String shop_id;
     private String shop_desc;
     private String shop_contact_email;
+    private String shop_phone_no;
+    private String shop_weblink;
+    private String shop_active_ind;
+
+
+    public String getShop_active_ind() {
+        return shop_active_ind;
+    }
+
+    public void setShop_active_ind(String shop_active_ind) {
+        this.shop_active_ind = shop_active_ind;
+    }
+
+
+
+
+    public String getShop_weblink() {
+        return shop_weblink;
+    }
+
+    public void setShop_weblink(String shop_weblink) {
+        this.shop_weblink = shop_weblink;
+    }
+
 
     public String getShop_phone_no() {
         return shop_phone_no;
@@ -16,8 +40,6 @@ public class FeedItem {
         this.shop_phone_no = shop_phone_no;
     }
 
-    private String shop_phone_no;
-
     public String getShop_contact_email() {
         return shop_contact_email;
     }
@@ -25,7 +47,6 @@ public class FeedItem {
     public void setShop_contact_email(String shop_contact_email) {
         this.shop_contact_email = shop_contact_email;
     }
-
 
 
     public String getShop_desc() {

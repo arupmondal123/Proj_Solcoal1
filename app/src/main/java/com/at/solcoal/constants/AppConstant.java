@@ -7,12 +7,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class AppConstant
 {
-	public static final String URL = "http://drgrep.com/drgrep_web/webservice/";
+	//public static final String URL = "http://drgrep.com/drgrep_web/webservice/";
 
 	//public static final String URL = "http://drgrep-staging-731725861.ap-south-1.elb.amazonaws.com/webservice/";
 
 	//new one
-	// static final String URL = "http://ec2-52-66-74-188.ap-south-1.compute.amazonaws.com/drgrep_web/webservice/";
+	public static final String URL = "http://ec2-52-66-74-188.ap-south-1.compute.amazonaws.com/drgrep_web/webservice/";
 
 	public static final int PRODUCT_SINGLE_TITLE_CHAR_LIMIT =15; 
 	

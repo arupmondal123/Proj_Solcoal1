@@ -39,7 +39,7 @@ public final class R {
 	}
 	public static final class drawable {
 		public static final int ic_launcher = 0x7f0200fb;
-		public static final int indicator_corner_bg = 0x7f020109;
+		public static final int indicator_corner_bg = 0x7f02010a;
 	}
 	public static final class id {
 		public static final int Accordion = 0x7f0f0042;
@@ -58,28 +58,28 @@ public final class R {
 		public static final int ZoomIn = 0x7f0f004f;
 		public static final int ZoomOut = 0x7f0f0050;
 		public static final int ZoomOutSlide = 0x7f0f0051;
-		public static final int daimajia_indicator_wrapper = 0x7f0f01ca;
-		public static final int daimajia_slider_image = 0x7f0f0246;
-		public static final int daimajia_slider_viewpager = 0x7f0f024f;
-		public static final int default_bottom_left_indicator = 0x7f0f0252;
-		public static final int default_bottom_right_indicator = 0x7f0f0251;
-		public static final int default_center_bottom_indicator = 0x7f0f0250;
-		public static final int default_center_top_indicator = 0x7f0f0253;
-		public static final int default_center_top_left_indicator = 0x7f0f0255;
-		public static final int default_center_top_right_indicator = 0x7f0f0254;
-		public static final int description = 0x7f0f0249;
-		public static final int description_layout = 0x7f0f0248;
+		public static final int daimajia_indicator_wrapper = 0x7f0f01d6;
+		public static final int daimajia_slider_image = 0x7f0f024e;
+		public static final int daimajia_slider_viewpager = 0x7f0f0257;
+		public static final int default_bottom_left_indicator = 0x7f0f025a;
+		public static final int default_bottom_right_indicator = 0x7f0f0259;
+		public static final int default_center_bottom_indicator = 0x7f0f0258;
+		public static final int default_center_top_indicator = 0x7f0f025b;
+		public static final int default_center_top_left_indicator = 0x7f0f025d;
+		public static final int default_center_top_right_indicator = 0x7f0f025c;
+		public static final int description = 0x7f0f0251;
+		public static final int description_layout = 0x7f0f0250;
 		public static final int invisible = 0x7f0f001a;
-		public static final int loading_bar = 0x7f0f0247;
+		public static final int loading_bar = 0x7f0f024f;
 		public static final int oval = 0x7f0f003e;
 		public static final int rect = 0x7f0f003f;
 		public static final int visible = 0x7f0f001b;
 	}
 	public static final class layout {
-		public static final int indicator_layout = 0x7f04007c;
-		public static final int render_type_default = 0x7f0400a5;
-		public static final int render_type_text = 0x7f0400a6;
-		public static final int slider_layout = 0x7f0400ad;
+		public static final int indicator_layout = 0x7f040080;
+		public static final int render_type_default = 0x7f0400aa;
+		public static final int render_type_text = 0x7f0400ab;
+		public static final int slider_layout = 0x7f0400b2;
 	}
 	public static final class mipmap {
 		public static final int ic_launcher = 0x7f030006;

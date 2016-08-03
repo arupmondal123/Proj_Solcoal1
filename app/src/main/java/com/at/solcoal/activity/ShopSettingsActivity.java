@@ -53,6 +53,12 @@ public class ShopSettingsActivity extends AppCompatActivity {
     TextView input_contact_phoneno = null;
     SwitchCompat switchCompat;
 
+    String input_shopcontactemail = "";
+    String input_shopcontactphone = "";
+    String input_shopcontactweblink = "";
+    String input_shopactive_ind = "";
+    String returned_shop_id = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +84,11 @@ public class ShopSettingsActivity extends AppCompatActivity {
 
         Intent intent =getIntent();
         shop_id = intent.getStringExtra("shop_id_extra");
+        input_shopcontactemail = intent.getStringExtra("shop_email_extra");;
+        input_shopcontactphone = intent.getStringExtra("shop_phone_extra");;
+        input_shopcontactweblink = intent.getStringExtra("shop_weblink_extra");;
+        input_shopactive_ind = intent.getStringExtra("shop_shopactive_ind");;
+
 
         body = (LinearLayout) findViewById(R.id.body);
         l_contact_email = (LinearLayout) findViewById(R.id.linear_contact_email);
@@ -96,10 +107,25 @@ public class ShopSettingsActivity extends AppCompatActivity {
         switchCompat = (SwitchCompat) findViewById(R.id
                 .switch_item2);
 
-        progress1.setVisibility(View.VISIBLE);
-        body.setVisibility(View.INVISIBLE);
 
-        fetchShopSettings();
+
+        //fetchShopSettings();
+        userInfo = SharedPreferenceUtility.getUserInfo(ShopSettingsActivity.this);
+
+        input_contact_email.setText(input_shopcontactemail);
+        input_contact_phoneno.setText(input_shopcontactphone);
+        input_contact_website.setText(input_shopcontactweblink);
+        input_contact_phoneno.setText(input_shopcontactphone);
+
+
+        if (input_shopactive_ind.equals("Y")) {
+            switchCompat.setChecked(true);
+            shop_active_ind ="Y";
+        } else {
+            switchCompat.setChecked(false);
+            shop_active_ind ="N";
+        }
+        body.setVisibility(View.VISIBLE);
 
         l_contact_email.setOnClickListener(new View.OnClickListener() {
 
@@ -156,7 +182,16 @@ public class ShopSettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
         super.onResume();
+        progress1.setVisibility(View.VISIBLE);
+        body.setVisibility(View.INVISIBLE);
+        fetchShopSettings();
+
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
 
 
     }
@@ -198,7 +233,7 @@ public class ShopSettingsActivity extends AppCompatActivity {
         com.at.solcoal.web.AsyncWebClient asyncWebClient = new com.at.solcoal.web.AsyncWebClient();
         asyncWebClient.SetUrl(AppConstant.URL);
         RequestParams reqParam = new RequestParams();
-        userInfo = SharedPreferenceUtility.getUserInfo(ShopSettingsActivity.this);
+
         reqParam.add("action", "shop_get_by_user");
         reqParam.add("user_id", userInfo.getId());
         reqParam.add("shop_id", shop_id);
@@ -210,7 +245,6 @@ public class ShopSettingsActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject jsr) {
                 try {
                     String responseCode = jsr.getString("response_code");
-					/**/
                     Log.e("response_code", responseCode);
                     if (responseCode.equals("1")) {
                         JSONArray pArray = jsr.getJSONArray("data");
@@ -308,6 +342,7 @@ public class ShopSettingsActivity extends AppCompatActivity {
         });
 
     }
+
 
 
     private void saveShopSettings() {

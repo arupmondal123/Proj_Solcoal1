@@ -229,13 +229,13 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (fragmentOpen.equals("Shop")) {
-            viewPager.setCurrentItem(1);
-            pageSelected =1;
+        if (fragmentOpen.equals("Inventory")) {
+            viewPager.setCurrentItem(0);
+            pageSelected =0;
         }
         else{
-            viewPager.setCurrentItem(0);
-            pageSelected = 0;
+            viewPager.setCurrentItem(1);
+            pageSelected = 1;
         }
 
     }

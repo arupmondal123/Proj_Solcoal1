@@ -180,4 +180,13 @@
         <item name="colorSwitchThumbNormal">#cc0000</item>
     </style>
 
+
+    <style name="StyledTilEditTextFloatingLabel" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#e7e4e4</item>
+    </style>
+
+    <style name="StyledTilEditTextLayout">
+        <item name="android:textColorHint">@color/accent</item>
+    </style>
+
 </resources>

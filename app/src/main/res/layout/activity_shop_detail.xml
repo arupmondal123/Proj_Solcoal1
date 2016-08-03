@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="24dp">
+            android:paddingTop="4dp">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -98,17 +98,18 @@
 
                         <ImageView
                             android:id="@+id/emailimage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginTop="10dp"
-                            android:scaleType="centerCrop"
+                            android:background="@color/transparent"
+                            android:scaleType="fitXY"
                             android:src="@drawable/ic_email_black_48dp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/emailtext"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="15dp"
                             android:layout_marginLeft="30dp"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="emailtext" />
@@ -121,20 +122,20 @@
 
                         <ImageView
                             android:id="@+id/phoneimage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginTop="10dp"
-                            android:scaleType="centerCrop"
+                            android:scaleType="fitXY"
                             android:src="@drawable/ic_call_black_48dp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/phonetext"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="15dp"
                             android:layout_marginLeft="30dp"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="emailtext" />
+                            android:text="phoneno" />
                     </LinearLayout>
 
                     <View
@@ -159,17 +160,17 @@
 
                         <ImageView
                             android:id="@+id/openinghoursimage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginTop="10dp"
-                            android:scaleType="centerCrop"
+                            android:scaleType="fitXY"
                             android:src="@drawable/ic_access_time_black_48dp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/openinghours"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="15dp"
                             android:layout_marginLeft="40dp"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="8 A.M    to     8 P.M." />
@@ -184,26 +185,35 @@
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/card_margin"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="@dimen/card_margin2"
                 android:layout_marginLeft="@dimen/card_margin2"
                 android:layout_marginRight="@dimen/card_margin2">
 
                 <LinearLayout
-                    style="@style/Widget.CardContent"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/products"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Products" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:layout_below="@id/products"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:id="@+id/container">
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -213,8 +223,9 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         app:layout_anchor="@id/appbar"
+        android:id="@+id/addbutton"
         app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/ic_action_edit"
+        android:src="@mipmap/fab_add_product"
         android:layout_margin="@dimen/fab_margin"
         android:clickable="true"/>
 

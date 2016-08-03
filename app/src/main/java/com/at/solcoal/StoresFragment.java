@@ -127,6 +127,8 @@ public class StoresFragment extends Fragment {
                             String shop_desc = "";
                             String shop_contact_email = "";
                             String shop_phone_no = "";
+                            String shop_weblink = "";
+                            String shop_active_ind = "";
 
                             for (int i = 0; i < l; i++) {
                                 obj = pArray.getJSONObject(i);
@@ -136,7 +138,8 @@ public class StoresFragment extends Fragment {
                                     shop_desc = obj.getString("shop_desc");
                                     shop_contact_email = obj.getString("shop_contact_email");
                                     shop_phone_no = obj.getString("shop_phone_no");
-
+                                    shop_weblink = obj.getString("shop_online_weblink");
+                                    shop_active_ind = obj.getString("shop_active_ind");
                                     //com.at.solcoal.utility.Toast.showSmallToast(getContext(), shop_name);
                                     FeedItem item = new FeedItem();
                                     item.setTitle(shop_name);
@@ -144,6 +147,9 @@ public class StoresFragment extends Fragment {
                                     item.setShop_desc(shop_desc);
                                     item.setShop_contact_email(shop_contact_email);
                                     item.setShop_phone_no(shop_phone_no);
+                                    item.setShop_weblink(shop_weblink);
+                                    item.setShop_active_ind(shop_active_ind);
+
 
                                     feedsList.add(item);
                                 } catch (Exception e) {

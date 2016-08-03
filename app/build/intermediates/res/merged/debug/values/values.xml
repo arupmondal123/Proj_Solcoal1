@@ -2254,10 +2254,10 @@
     <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="sharestring">"Share"</string>
-    <string name="shop_description">"Description"</string>
+    <string name="shop_description">"Description of the shop"</string>
     <string name="shop_email">"Email"</string>
     <string name="shop_location">"Location"</string>
-    <string name="shop_name">"Name"</string>
+    <string name="shop_name">"Name of the shop"</string>
     <string name="shop_phone">"Phone"</string>
     <string name="shop_settings">"Shop Settings"</string>
     <string name="shop_weblink">"Website"</string>
@@ -2288,6 +2288,7 @@
     <string name="take_a_new_photo">"Take a new Photo"</string>
     <string name="title">"Title"</string>
     <string name="title_activity_aboutus">AboutusActivity</string>
+    <string name="title_activity_add_products_to_shop">AddProductsToShop</string>
     <string name="title_activity_add_store">AddStoreActivity</string>
     <string name="title_activity_customer_support">CustomerSupport</string>
     <string name="title_activity_faq">FaqActivity</string>
@@ -3780,6 +3781,12 @@
     </style>
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splash</item>
+    </style>
+    <style name="StyledTilEditTextFloatingLabel" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#e7e4e4</item>
+    </style>
+    <style name="StyledTilEditTextLayout">
+        <item name="android:textColorHint">@color/accent</item>
     </style>
     <!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>

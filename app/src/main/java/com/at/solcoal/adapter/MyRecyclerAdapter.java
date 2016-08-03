@@ -63,10 +63,13 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<FeedListRowHolder> {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, ShopDetail.class);
 
+                intent.putExtra("shop_id_extra", feedItem.getShop_id());
                 intent.putExtra("shop_name_extra", feedItem.getTitle());
                 intent.putExtra("shop_desc_extra", feedItem.getShop_desc());
                 intent.putExtra("shop_email_extra", feedItem.getShop_contact_email());
                 intent.putExtra("shop_phone_extra", feedItem.getShop_phone_no());
+                intent.putExtra("shop_weblink_extra", feedItem.getShop_weblink());
+                intent.putExtra("shop_shopactive_ind", feedItem.getShop_active_ind());
 
                 context.startActivity(intent);
             }
@@ -78,6 +81,11 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<FeedListRowHolder> {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, ShopSettingsActivity.class);
                 intent.putExtra("shop_id_extra", feedItem.getShop_id());
+                intent.putExtra("shop_name_extra", feedItem.getTitle());
+                intent.putExtra("shop_desc_extra", feedItem.getShop_desc());
+                intent.putExtra("shop_email_extra", feedItem.getShop_contact_email());
+                intent.putExtra("shop_phone_extra", feedItem.getShop_phone_no());
+
                 context.startActivity(intent);
             }
         });

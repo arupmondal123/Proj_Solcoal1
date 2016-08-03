@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:2:1-467:12
+ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:2:1-471:12
 	package
 		ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:3:5-29
 		INJECTED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml
@@ -221,7 +221,7 @@ ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj
 	android:name
 		ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:62:30-80
 application
-ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:64:5-465:19
+ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:64:5-469:19
 MERGED from [com.google.android.gms:play-services-location:7.8.0] F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services-base:7.8.0] F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:23.1.1] F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\AndroidManifest.xml:22:5-20
@@ -865,3 +865,9 @@ ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj
 		ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:463:13-51
 	android:name
 		ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:461:13-48
+activity#com.at.solcoal.AddProductsToShop
+ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:465:9-468:20
+	android:label
+		ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:467:13-72
+	android:name
+		ADDED from F:\Android\Backup\To be uploaded to Cpanel on 1505\Proj_Solcoal1\Proj_Solcoal1\app\src\main\AndroidManifest.xml:466:13-46

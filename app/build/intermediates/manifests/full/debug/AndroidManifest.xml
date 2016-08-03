@@ -470,6 +470,10 @@
             android:label="@string/title_activity_shop_detail"
             android:theme="@style/MyMaterialTheme" >
         </activity>
+        <activity
+            android:name="com.at.solcoal.AddProductsToShop"
+            android:label="@string/title_activity_add_products_to_shop" >
+        </activity>
     </application>
 
 </manifest>

@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -50,7 +53,7 @@ public class AddStoreActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        getSupportActionBar().setTitle("Add Shop");
+        getSupportActionBar().setTitle("Add a Shop");
 
         input_shopname = (EditText) findViewById(R.id.input_shop_name);
         input_shopdescription = (EditText) findViewById(R.id.input_shop_description);
@@ -64,15 +67,49 @@ public class AddStoreActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                pd = new ProgressDialog(AddStoreActivity.this);
-                pd.setMessage("Adding Shop...");
-                pd.show();
-                addShop();
+
+                if(ValidateInputClick()){
+                    pd = new ProgressDialog(AddStoreActivity.this);
+                    pd.setMessage("Adding Shop...");
+                    pd.show();
+                    addShop();
+                }
             }
 
         });
 
     }
+
+    public Boolean ValidateInputClick() {
+
+        Boolean valid =true;
+        final TextInputLayout layout_shop_name = (TextInputLayout) findViewById(R.id.input_layout_shop_name);
+        String strshopName = layout_shop_name.getEditText().getText().toString();
+
+        if(!TextUtils.isEmpty(strshopName)) {
+            Snackbar.make(layout_shop_name, strshopName, Snackbar.LENGTH_SHORT).show();
+            layout_shop_name.setErrorEnabled(false);
+
+        } else {
+            layout_shop_name.setError("*Shop name required");
+            layout_shop_name.setErrorEnabled(true);
+            valid =false;
+        }
+
+        final TextInputLayout layout_shop_desc = (TextInputLayout) findViewById(R.id.input_layout_shop_description);
+        String strshopDesc = layout_shop_desc.getEditText().getText().toString();
+
+        if(!TextUtils.isEmpty(strshopDesc)) {
+            Snackbar.make(layout_shop_desc, strshopDesc, Snackbar.LENGTH_SHORT).show();
+            layout_shop_desc.setErrorEnabled(false);
+        } else {
+            layout_shop_desc.setError("*Shop description required");
+            layout_shop_desc.setErrorEnabled(true);
+            valid =false;
+        }
+        return valid;
+    }
+
 
     private void addShop() {
 
