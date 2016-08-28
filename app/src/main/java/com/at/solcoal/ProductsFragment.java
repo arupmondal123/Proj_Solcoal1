@@ -29,7 +29,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.at.solcoal.activity.Cheeses;
 import com.at.solcoal.adapter.GridViewAdapterProductForUser;
 import com.at.solcoal.constants.AppConstant;
 import com.at.solcoal.data.ProductConciseList;

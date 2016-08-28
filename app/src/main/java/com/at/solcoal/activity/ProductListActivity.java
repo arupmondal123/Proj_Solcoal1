@@ -79,6 +79,8 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 
+import static com.at.solcoal.activity.UserProfileActivity.toCamelCase;
+
 public class ProductListActivity extends AppCompatActivity {
 
     private Context context = null;
@@ -270,7 +272,7 @@ public class ProductListActivity extends AppCompatActivity {
         if (isUserLoggedIn()) {
             String userName = getUserName();
             //Toast.showSmallToast(context, "User Name"+userName);
-            ((TextView) headerView.findViewById(R.id.username_tv)).setText(userName);
+            ((TextView) headerView.findViewById(R.id.username_tv)).setText(toCamelCase(userName));
             ((TextView) headerView.findViewById(R.id.name_initial)).setText(NI.getInitial(userName));
             sign_in_register_tv.setVisibility(View.GONE);
 
@@ -322,12 +324,13 @@ public class ProductListActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         Menu m = nvDrawer.getMenu();
+                        /*
                         for (int i = 0; i < m.size(); i++) {
                             MenuItem mi = m.getItem(i);
                             if (!(mi.getItemId() == menuItem.getItemId())) {
                                 mi.setChecked(false);
                             }
-                        }
+                        }*/
 
 
                         menuItem.setChecked(true);
@@ -401,9 +404,9 @@ public class ProductListActivity extends AppCompatActivity {
         }
 
         // Highlight the selected item has been done by NavigationView
-        menuItem.setChecked(false);
+        menuItem.setChecked(true);
         // Set action bar title
-        setTitle(menuItem.getTitle());
+        setTitle("Products");
         // Close the navigation drawer
         mDrawer.closeDrawers();
     }
@@ -517,7 +520,7 @@ public class ProductListActivity extends AppCompatActivity {
             //nvDrawer.getMenu().setGroupVisible(R.id.mnu_shop_group, true);
             //menu.add(R.id.mnu_shop_group, 6, 600, "My shops");
             //menu.add(R.id.mnu_shop_group, 7, 700, "Shop Settings");
-            drawermenu.setGroupCheckable(R.id.mnu_shop_group, true, true);
+            //drawermenu.setGroupCheckable(R.id.mnu_shop_group, true, true);
             drawermenu.setGroupVisible(R.id.mnu_shop_group, true);
         }
         else {

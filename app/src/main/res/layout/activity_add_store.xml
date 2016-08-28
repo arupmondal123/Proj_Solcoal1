@@ -34,6 +34,44 @@
             android:layout_marginBottom="@dimen/card_margin"
             android:layout_marginLeft="@dimen/card_margin2"
             android:layout_marginRight="@dimen/card_margin2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/llshoppicture"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/shoppicture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_store_black_48dp" />
+            <TextView
+                android:id="@+id/addshoppicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
+                android:text="Add Shop Picture"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_margin"
+            android:layout_marginLeft="@dimen/card_margin2"
+            android:layout_marginRight="@dimen/card_margin2">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

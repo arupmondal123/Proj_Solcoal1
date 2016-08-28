@@ -41,10 +41,10 @@
             android:id="@+id/myShop"
             android:icon="@drawable/ic_store_black_48dp"
             android:clickable="true"
-            android:contextClickable="false"
             android:textColor="@color/white"
             android:itemBackground="@android:color/transparent"
             android:title="@string/my_shop" />
+
     </group>
 
 </menu>

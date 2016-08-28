@@ -187,10 +187,15 @@ public class SearchInputActivity extends AppCompatActivity {
 
         gridView = (GridView) findViewById(R.id.grid_view);
         InitializeGridLayout(); //
-
+/*
         url= "http://166.62.32.227:8983/solr/products/select?q=fullText%3A*";
         url = url+ query + "*&rows=100000&wt=json&indent=true";
         url = url.replace(" ", "%20");
+*/
+        url= "http://ec2-52-66-74-188.ap-south-1.compute.amazonaws.com:8983/solr/products/select?q=fullText%3A*";
+        url = url+ query + "*&rows=100000&wt=json&indent=true";
+        url = url.replace(" ", "%20");
+
         //Toast.showSmallToast(context, query);
         gridView.setVisibility(View.VISIBLE);
         new JSONParse().execute();

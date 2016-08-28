@@ -11,6 +11,7 @@ public class ProductConciseList
 	public static ArrayList<Product_Concise>	productConciseList	= new ArrayList<Product_Concise>();
 	public static ArrayList<Product_Concise>	productConciseListForUser	= new ArrayList<Product_Concise>();
 	public static ArrayList<Product_Concise_Shop>	productConciseListForUserShop	= new ArrayList<Product_Concise_Shop>();
+	public static ArrayList<Product_Concise_Shop>	productConciseListForUserShopAddProducts	= new ArrayList<Product_Concise_Shop>();
 
 	public static void clear()
 	{
@@ -37,6 +38,16 @@ public class ProductConciseList
 		try
 		{
 			productConciseListForUserShop.clear();
+		} catch (Exception e)
+		{
+		}
+	}
+
+	public static void clearForUserShopAddProducts()
+	{
+		try
+		{
+			productConciseListForUserShopAddProducts.clear();
 		} catch (Exception e)
 		{
 		}

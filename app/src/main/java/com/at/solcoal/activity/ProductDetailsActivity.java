@@ -508,7 +508,8 @@ public class ProductDetailsActivity extends Activity
 
 	private void loadOwnerDetails()
 	{
-		Intent intentLocal = new Intent(ProductDetailsActivity.this, UserProductList.class);
+		//Intent intentLocal = new Intent(ProductDetailsActivity.this, UserProductList.class);
+		Intent intentLocal = new Intent(ProductDetailsActivity.this, UserProfileActivity.class);
 		intentLocal.putExtra("owner_id", productOwnerId);
 		intentLocal.putExtra("userInfo", userInfo);
 		startActivity(intentLocal);

@@ -22,7 +22,6 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.at.solcoal.activity.Cheeses;
 import com.at.solcoal.adapter.MyRecyclerAdapter;
 import com.at.solcoal.constants.AppConstant;
 import com.at.solcoal.data.FeedItem;
@@ -56,6 +55,7 @@ public class StoresFragment extends Fragment {
     private String							ownerId					= null;
     private List<FeedItem> feedsList;
     private RecyclerView rv;
+    private Boolean ownprofile;
 
     @Nullable
     @Override
@@ -102,10 +102,12 @@ public class StoresFragment extends Fragment {
         if (ownerId != null)
         {
             reqParam.add("user_id", ownerId);
+            ownprofile = false;
         }
         else
         {
             reqParam.add("user_id", userIdStr);
+            ownprofile = true;
         }
 
 
@@ -158,7 +160,7 @@ public class StoresFragment extends Fragment {
 
                             }
                             if (feedsList.size() > 0) {
-                                adapter = new MyRecyclerAdapter(getActivity(), feedsList);
+                                adapter = new MyRecyclerAdapter(getActivity(), feedsList,ownprofile);
                                 rv.setAdapter(adapter);
 
                             } else {

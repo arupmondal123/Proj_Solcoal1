@@ -41,10 +41,10 @@
             android:id="@+id/myShop"
             android:icon="@drawable/ic_store_black_48dp"
             android:clickable="true"
-            android:contextClickable="false"
             android:textColor="@color/white"
             android:itemBackground="@android:color/transparent"
             android:title="@string/my_shop" />
+
     </group>
 
 </menu><!-- From: file:/F:/Android/Backup/To%20be%20uploaded%20to%20Cpanel%20on%201505/Proj_Solcoal1/Proj_Solcoal1/app/src/main/res/menu/drawer_view.xml -->

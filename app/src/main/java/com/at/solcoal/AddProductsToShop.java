@@ -8,6 +8,7 @@ import android.view.View;
 
 public class AddProductsToShop extends AppCompatActivity {
     private Toolbar mToolbar;
+    private ProuductAddToShopFragment prouductAddToShopFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +26,25 @@ public class AddProductsToShop extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        getSupportActionBar().setTitle("Add Products to the Shop");
+        getSupportActionBar().setTitle("Add or Delete Products");
 
         if (savedInstanceState == null) {
+            prouductAddToShopFragment =  new ProuductAddToShopFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new ProuductAddToShopFragment())
+                    .add(R.id.container, prouductAddToShopFragment)
                     .commit();
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //getSupportFragmentManager().beginTransaction().detach(prouductAddToShopFragment).attach(prouductAddToShopFragment).commit();
+        //adapter.notifyDataSetChanged();
+
+        //fetchShopList(userInfo.getId());
+    }
+
+
 
 }

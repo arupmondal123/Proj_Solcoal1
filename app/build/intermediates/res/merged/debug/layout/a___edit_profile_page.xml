@@ -85,7 +85,7 @@
                     android:background="@android:color/white"
                     android:maxLength="30"
                     android:paddingLeft="2dp"
-                    
+
                     android:text=""
                     android:textAlignment="textStart"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -137,6 +137,7 @@
                     android:paddingLeft="2dp"
                     android:text=""
                     android:inputType="none"
+                    android:enabled="false"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/app_black"
                     android:textSize="@dimen/app_header_text_size" />

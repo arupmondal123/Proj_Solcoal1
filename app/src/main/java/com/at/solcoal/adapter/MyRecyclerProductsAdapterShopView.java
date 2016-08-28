@@ -14,6 +14,7 @@ import com.at.solcoal.R;
 import com.at.solcoal.data.FeedProductListRowHolder;
 import com.at.solcoal.model.Product_Concise;
 import com.at.solcoal.model.Product_Concise_Shop;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class MyRecyclerProductsAdapterShopView extends RecyclerView.Adapter<Feed
 
     @Override
     public FeedProductListRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_layout_shop, null);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_layout, null);
         FeedProductListRowHolder mh = new FeedProductListRowHolder(v);
 
         return mh;
@@ -46,10 +47,14 @@ public class MyRecyclerProductsAdapterShopView extends RecyclerView.Adapter<Feed
         final Product_Concise_Shop product_Concise_Shop = feedProductItemList.get(i);
 
         //Log.e("MyRecyclerProductAdapter", "count" + i);
+        /*
         Picasso.with(mContext).load(product_Concise_Shop.getProd_img_link())
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.ic_store_black_48dp)
                 .into(feedProductListRowHolder.image);
+       */
+
+        Glide.with(mContext).load(product_Concise_Shop.getProd_img_link()).into(feedProductListRowHolder.image);
 
         feedProductListRowHolder.name.setText(product_Concise_Shop.getTitle());
         feedProductListRowHolder.price.setText(product_Concise_Shop.getPrice());

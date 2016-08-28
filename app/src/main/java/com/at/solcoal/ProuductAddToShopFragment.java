@@ -1,10 +1,15 @@
 package com.at.solcoal;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
@@ -12,11 +17,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.at.solcoal.adapter.MyRecyclerProductsAdapter;
 import com.at.solcoal.constants.AppConstant;
 import com.at.solcoal.data.FeedItem;
 import com.at.solcoal.data.ProductConciseList;
+import com.at.solcoal.model.DividerItemDecoration;
 import com.at.solcoal.model.Product_Concise;
 import com.at.solcoal.model.Product_Concise_Shop;
 import com.at.solcoal.model.UserInfo;
@@ -35,60 +42,77 @@ import java.util.List;
 
 public class ProuductAddToShopFragment extends android.support.v4.app.Fragment {
 
-        private List<Product_Concise> feedProductItemList = new ArrayList<Product_Concise>();
-        SwitchCompat switchCompat;
-        private RecyclerView mRecyclerView;
+    private List<Product_Concise> feedProductItemList = new ArrayList<Product_Concise>();
+    SwitchCompat switchCompat;
+    private RecyclerView mRecyclerView;
 
-        private MyRecyclerProductsAdapter adapter;
-        private UserInfo userInfo				= null;
-        private CircleProgressBar progress1;
-        private String							ownerId					= null;
-        private String							shopid					= null;
-        private List<Product_Concise> feedsProductList;
-        private RecyclerView rv;
-
-        @Nullable
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_prouduct_add_to_shop, container, false);
-            rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
-            //rv = (RecyclerView) inflater.inflate(
-            //        R.layout.fragment_prouduct_add_to_shop, container, false);
-
-            setupRecyclerView(rv);
-            //rv.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
-            //rv.getItemAnimator().setMoveDuration(1000);
-            userInfo = SharedPreferenceUtility.getUserInfo(getActivity());
-
-            ownerId = getActivity().getIntent().getStringExtra("owner_id");
-            shopid = getActivity().getIntent().getStringExtra("shop_id_extra");
-            //rv.setHasFixedSize(true);
-            //fetchShopList(userInfo.getId());
+    private MyRecyclerProductsAdapter adapter;
+    private UserInfo userInfo = null;
+    private CircleProgressBar progress1;
+    private String ownerId = null;
+    private String shopid = null;
+    private List<Product_Concise> feedsProductList;
+    private RecyclerView rv;
+    private RelativeLayout rlprogress1;
 
 
-            return rootView;
-        }
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_prouduct_add_to_shop, container, false);
+        rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
+        //rv = (RecyclerView) inflater.inflate(
+        //        R.layout.fragment_prouduct_add_to_shop, container, false);
 
-        private void setupRecyclerView(RecyclerView recyclerView) {
+        setupRecyclerView(rv);
+        //rv.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
+        //rv.getItemAnimator().setMoveDuration(1000);
+        userInfo = SharedPreferenceUtility.getUserInfo(getActivity());
+
+        ownerId = getActivity().getIntent().getStringExtra("owner_id");
+        shopid = getActivity().getIntent().getStringExtra("shop_id_extra");
+        rv.setHasFixedSize(true);
+        progress1 = (CircleProgressBar) rootView.findViewById(R.id.progressBar);
+        rlprogress1 = (RelativeLayout) rootView.findViewById(R.id.rl_progressBar);
+        progress1 = (CircleProgressBar) rootView.findViewById(R.id.progressBar);
+        progress1.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
+        //fetchShopList(userInfo.getId());
+        progress1.setVisibility(View.VISIBLE);
+        rlprogress1.setVisibility(View.VISIBLE);
+        return rootView;
+    }
+
+    private void setupRecyclerView(RecyclerView recyclerView) {
 
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        RecyclerView.ItemDecoration itemDecoration = new
+                DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST);
+
+        recyclerView.addItemDecoration(itemDecoration);
         /*recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),
                 getRandomSublist(Cheeses.sCheeseStrings, 30)));*/
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //adapter.notifyDataSetChanged();
+        fetchProductConciseList();
+        //fetchShopList(userInfo.getId());
+    }
+
+    private void clearProductConciseList() {
+        try {
+            ProductConciseList.productConciseListForUserShopAddProducts.clear();
+            ProductConciseList.clearForUserShopAddProducts();
+        } catch (Exception e) {
         }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            //adapter.notifyDataSetChanged();
-            fetchProductConciseList();
-            //fetchShopList(userInfo.getId());
-        }
-
-
+    }
 
     private void fetchProductConciseList() {
 
+        clearProductConciseList();
 
         com.at.solcoal.web.AsyncWebClient asyncWebClient = new com.at.solcoal.web.AsyncWebClient();
         asyncWebClient.SetUrl(AppConstant.URL);
@@ -99,7 +123,7 @@ public class ProuductAddToShopFragment extends android.support.v4.app.Fragment {
         reqParam.add("user_id", userInfo.getId());
         reqParam.add("action", "shop_prod_entries_get");
 
-        Toast.showSmallToast(getActivity(), userInfo.getId());
+        //Toast.showSmallToast(getActivity(), userInfo.getId());
         //reqParam.add("lat", latitude.trim());
         //reqParam.add("long", longitude.trim());
 		/**/
@@ -117,6 +141,7 @@ public class ProuductAddToShopFragment extends android.support.v4.app.Fragment {
                         JSONArray pArray = jsr.getJSONArray("data");
                         int l = pArray.length();
                         if (l > 0) {
+                            Log.e("response_code arrays",String.valueOf(l));
                             JSONObject obj = null;
                             String productId = "";
                             String title = "";
@@ -158,12 +183,14 @@ public class ProuductAddToShopFragment extends android.support.v4.app.Fragment {
                                     isprodinstore = "";
                                 }
 
-                                ProductConciseList.productConciseListForUserShop
-                                        .add(new Product_Concise_Shop(productId, title, price, link, distance,isprodinstore,shopid));
+                                ProductConciseList.productConciseListForUserShopAddProducts
+                                        .add(new Product_Concise_Shop(productId, title, price, link, distance, isprodinstore, shopid));
                             }
-                            if (ProductConciseList.productConciseListForUser.size() > 0) {
+                            if (ProductConciseList.productConciseListForUserShopAddProducts.size() > 0) {
                                 // setAdaptertoGridView(ProductConciseList.productConciseList);
-                                adapter = new MyRecyclerProductsAdapter(getActivity(), ProductConciseList.productConciseListForUserShop);
+                                progress1.setVisibility(View.INVISIBLE);
+                                rlprogress1.setVisibility(View.INVISIBLE);
+                                adapter = new MyRecyclerProductsAdapter(getActivity(), ProductConciseList.productConciseListForUserShopAddProducts);
                                 rv.setAdapter(adapter);
                             } else {
                                 Toast.showSmallToast(getActivity(), "No Data found.");
@@ -201,8 +228,5 @@ public class ProuductAddToShopFragment extends android.support.v4.app.Fragment {
             ;
         });
     }
-
-
-
 
 }

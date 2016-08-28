@@ -154,7 +154,9 @@ public class UserProductList extends Activity
 			((TextView) findViewById(R.id.name_initial)).setText(NI.getInitial(ownerInfo.getName().toUpperCase()));
 		}
 		catch (Exception e)
-		{}
+		{
+
+		}
 
 		/*
 		 * 

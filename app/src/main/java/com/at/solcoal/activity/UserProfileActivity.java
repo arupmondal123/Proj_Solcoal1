@@ -63,12 +63,19 @@ public class UserProfileActivity extends AppCompatActivity {
     private int							pageSelected				= 0;
     private String fragmentOpen 				;
     private ViewPager viewPager;
+    private UserInfo						ownerInfo				= null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         Intent intent = getIntent();
+
+
         fragmentOpen = intent.getStringExtra("fragmentToOpen");
+        if (fragmentOpen == null) {
+            fragmentOpen = "Inventory";
+        }
+
         //final String cheeseName = intent.getStringExtra(EXTRA_NAME);
         //Toast.showLongToast(UserProfileActivity.this,"fragmentOpen="+fragmentOpen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -83,20 +90,20 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setTitle("");
+
+        userInfo = SharedPreferenceUtility.getUserInfo(UserProfileActivity.this);
 /*
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle("Profie Name");
+        collapsingToolbar.setTitle(userInfo.getName());
 */
+
+        ownerId = getIntent().getStringExtra("owner_id");
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-
 
         if (viewPager != null) {
             setupViewPager(viewPager);
         }
-
-
 
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -132,41 +139,25 @@ public class UserProfileActivity extends AppCompatActivity {
         //loadBackdrop();
         */
 
-        userInfo = SharedPreferenceUtility.getUserInfo(UserProfileActivity.this);
-
-        ownerId = getIntent().getStringExtra("owner_id");
 
 
+
+        Log.e("UserProfileActivity", "onerid="+ownerId);
         if (ownerId != null)
         {
-            //fetchOwnerAndProductListDetails();
+
+            Log.e("UserProfileActivity", "enteredonerid=" + ownerId);
+            fetchOwnerAndProductListDetails();
+
+            ((FloatingActionButton) findViewById(R.id.fab)).setVisibility(View.GONE);
         }
         else {
-            ((TextView) findViewById(R.id.user_profile_name)).setText(userInfo.getName());
-            /*
-            editProfile.setVisibility(View.VISIBLE);
-            ((TextView) findViewById(R.id.username_upl)).setText(userInfo.getName());
-            ((TextView) findViewById(R.id.username_upl)).setVisibility(View.VISIBLE);
 
-            try
-            {
-                ((TextView) findViewById(R.id.name_initial)).setText(NI.getInitial(userInfo.getName().toUpperCase()));
-            }
-            catch (Exception e)
-            {
-
-            }
-
-            fetchProductConciseList(userInfo.getId());
-            editProfile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v)
-                {
-                    landOnUserDetails(true);
-                }
-            });
-       */
+            ((TextView) findViewById(R.id.user_profile_name)).setText(toCamelCase(userInfo.getName()));
+            ((FloatingActionButton) findViewById(R.id.fab)).setVisibility(View.VISIBLE);
         }
+
+
         ((FloatingActionButton) findViewById(R.id.fab)).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -174,13 +165,73 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 if (pageSelected == 0) {
                     startProductAddPictureActivity();
-                }
-                else{
+                } else {
                     startAddStoreActivity();
-            }
+                }
             }
 
         });
+
+    }
+
+    private void fetchOwnerAndProductListDetails()
+    {
+        com.at.solcoal.web.AsyncWebClient asyncWebClient = new com.at.solcoal.web.AsyncWebClient();
+        asyncWebClient.SetUrl(AppConstant.URL);
+        RequestParams reqParam = new RequestParams();
+        reqParam.add("action", "user_get_by_id");
+        reqParam.add("user_id", ownerId);
+        Log.e("UserProfileActivity", "fetchOwnerAndProductListDetails");
+        asyncWebClient.post(reqParam, new JsonHttpResponseHandler() {
+                    @SuppressWarnings("unchecked")
+                    @Override
+                    public void onSuccess(int statusCode, org.apache.http.Header[] headers, JSONObject jsr) {
+                        try {
+                            Log.e("UserProfileActivity", "onSuccess");
+                            String responseCode = jsr.getString("response_code");
+                            if (responseCode.equals("1")) {
+                                JSONObject obj = jsr.getJSONObject("data");
+                                ownerInfo = new UserInfo();
+                                ownerInfo.setId(obj.getString("user_id"));
+                                ownerInfo.setName(obj.getString("user_name"));
+                                ownerInfo.setEmail(obj.getString("user_email_id"));
+                                ownerInfo.setGender(obj.getString("user_sex"));
+                                ((TextView) findViewById(R.id.user_profile_name)).setText(toCamelCase(ownerInfo.getName()));
+                                Log.e("UserProfileActivity", "onerino=" + obj.getString("user_name"));
+                                // ownerInfo.setImageUrl(obj.getString("user_image_link"));
+                                //fetchOwnerAndProductListDetails(ownerInfo);
+                            } else {
+                                //Toast.showSmallToast(context, "Error!!!");
+                                Log.e("UserProfileActivity", "onError");
+                            }
+                        } catch (JSONException e) {
+                            Log.e("errr", e.getMessage());
+                        }
+                    }
+
+                    ;
+
+                    @Override
+                    public void onFailure(int statusCode, org.apache.http.Header[] headers, String responseString,
+                                          Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
+                        Log.e("UserProfileActivity", "onFailure");
+                        Toast.showNetworkErrorMsgToast(UserProfileActivity.this);
+                    }
+
+                    ;
+                });
+
+    }
+
+    private void landOnUserDetails()
+    {
+
+        Intent intentLocal = new Intent(UserProfileActivity.this, UserLoginInfo.class);
+        intentLocal.putExtra("userInfo", userInfo);
+        intentLocal.putExtra("edit_view_profile", "Edit Profile");
+        intentLocal.putExtra(AppConstant.USER_INFO_ACTION, AppConstant.USER_INFO_USER);
+        startActivity(intentLocal);
     }
 
     public void onBack(View view)
@@ -199,6 +250,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
             //Intent intent = new Intent(ProductListActivity.this, SearchInputActivity.class);
             //startActivityForResult(intent, 2);
+            landOnUserDetails();
             return true;
         }
 
@@ -228,7 +280,14 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        userInfo = SharedPreferenceUtility.getUserInfo(UserProfileActivity.this);
+        if (ownerId != null)
+        {
+        //    ((TextView) findViewById(R.id.user_profile_name)).setText(toCamelCase(ownerInfo.getName()));
+        }
+        else {
+            ((TextView) findViewById(R.id.user_profile_name)).setText(toCamelCase(userInfo.getName()));
+        }
         if (fragmentOpen.equals("Inventory")) {
             viewPager.setCurrentItem(0);
             pageSelected =0;
@@ -243,14 +302,28 @@ public class UserProfileActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ProductsFragment(), "Inventory");
+        if (ownerId != null)
+        {
+
+        }
+        else {
+            adapter.addFragment(new ProductsFragment(), "Inventory");
+        }
+
         adapter.addFragment(new StoresFragment(), "Shops");
         viewPager.setAdapter(adapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        if (ownerId != null)
+        {
+            //do not populate menu for third party profile
+        }
+        else {
+            getMenuInflater().inflate(R.menu.menu_profile, menu);
+        }
+
         return true;
     }
 
@@ -281,6 +354,23 @@ public class UserProfileActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitles.get(position);
         }
+    }
+
+    public static String toCamelCase(String s){
+        if(s.length() == 0){
+            return s;
+        }
+        String[] parts = s.split(" ");
+        String camelCaseString = "";
+        for (String part : parts){
+            camelCaseString = camelCaseString + toProperCase(part) + " ";
+        }
+        return camelCaseString;
+    }
+
+    public static String toProperCase(String s) {
+        return s.substring(0, 1).toUpperCase() +
+                s.substring(1).toLowerCase();
     }
 
 

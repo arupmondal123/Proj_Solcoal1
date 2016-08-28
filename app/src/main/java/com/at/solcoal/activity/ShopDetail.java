@@ -16,6 +16,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,6 +49,7 @@ public class ShopDetail extends AppCompatActivity {
     String shopemail;
     String shopphone;
     String shopweblink;
+    String shopownprofile;
     String shopactiveind;
     private UserInfo userInfo = null;
     TextView phonenotext;
@@ -66,6 +68,8 @@ public class ShopDetail extends AppCompatActivity {
         shopemail = intent.getStringExtra("shop_email_extra");
         shopphone = intent.getStringExtra("shop_phone_extra");
         shopweblink = intent.getStringExtra("shop_weblink_extra");
+        shopownprofile = intent.getStringExtra("shop_ownprofile");
+
         shopactiveind = intent.getStringExtra("shop_shopactive_ind");
 
         //final String shopdescription = intent.getStringExtra("shop_description");
@@ -97,8 +101,11 @@ public class ShopDetail extends AppCompatActivity {
 
         textview.setText(shopname);
         shopdescription.setText(shopdesc);
+        Linkify.addLinks(phonenotext, Linkify.PHONE_NUMBERS);
         phonenotext.setText(shopphone);
+        Linkify.addLinks(emailaddrtext, Linkify.EMAIL_ADDRESSES);
         emailaddrtext.setText(shopemail);
+
         loadBackdrop();
 
         if (savedInstanceState == null) {
@@ -107,22 +114,30 @@ public class ShopDetail extends AppCompatActivity {
                     .commit();
         }
 
-        ((FloatingActionButton) findViewById(R.id.addbutton)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //Toast.showSmallToast(ShopDetail.this, "shopownprofile="+shopownprofile);
+        if  (shopownprofile.equals("Y")) {
+            ((FloatingActionButton) findViewById(R.id.addbutton)).setVisibility(View.VISIBLE);
+            ((FloatingActionButton) findViewById(R.id.addbutton)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Intent intent = new Intent(ShopDetail.this, AddProductsToShop.class);
-                intent.putExtra("shop_id_extra", shopid);
-                startActivity(intent);
-            }
-        });
+                    Intent intent = new Intent(ShopDetail.this, AddProductsToShop.class);
+                    intent.putExtra("shop_id_extra", shopid);
+                    startActivity(intent);
+                }
+            });
+        }
+        else {
+            ((FloatingActionButton) findViewById(R.id.addbutton)).setVisibility(View.GONE);
+        }
     }
+
 
 
 
     private void loadBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load(R.drawable.placeholder).centerCrop().into(imageView);
+        Glide.with(this).load(R.drawable.placeholder1).centerCrop().into(imageView);
     }
 
     @Override
@@ -169,8 +184,9 @@ public class ShopDetail extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_store, menu);
-
+        if  (shopownprofile.equals("Y")) {
+            getMenuInflater().inflate(R.menu.menu_store, menu);
+        }
         return true;
     }
 

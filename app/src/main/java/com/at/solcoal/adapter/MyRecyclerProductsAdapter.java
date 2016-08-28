@@ -21,6 +21,7 @@ import com.at.solcoal.data.FeedListRowHolder;
 import com.at.solcoal.data.FeedProductListRowHolder;
 import com.at.solcoal.model.Product_Concise_Shop;
 import com.at.solcoal.utility.Toast;
+import com.bumptech.glide.Glide;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
@@ -50,7 +51,7 @@ public class MyRecyclerProductsAdapter extends RecyclerView.Adapter<FeedProductL
 
     @Override
     public FeedProductListRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.add_product_to_shop_item, null);
+        v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_add_product_to_shop, null);
         FeedProductListRowHolder mh = new FeedProductListRowHolder(v);
 
         return mh;
@@ -64,23 +65,29 @@ public class MyRecyclerProductsAdapter extends RecyclerView.Adapter<FeedProductL
         final String shopid = product_Concise_Shop.getShop_id();
         final String productid = product_Concise_Shop.getProduct_id();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.height = 400; //height recycleviewer
+        params.height = 250; //height recycleviewer
         feedProductListRowHolder.itemView.setLayoutParams(params);
 
         //Log.e("MyRecyclerProductAdapter", "count" + i);
+        /*
         Picasso.with(mContext).load(product_Concise_Shop.getProd_img_link())
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.ic_store_black_48dp)
                 .into(feedProductListRowHolder.image);
+       */
+        Glide.with(mContext).load(product_Concise_Shop.getProd_img_link()).into(feedProductListRowHolder.image);
 
         feedProductListRowHolder.name.setText(product_Concise_Shop.getTitle());
         feedProductListRowHolder.price.setText(product_Concise_Shop.getPrice());
 
-        if (product_Concise_Shop.getIsprodinstore() == "Y"){
+        if (product_Concise_Shop.getIsprodinstore().equals("Y")){
             inShop = true;
+
+            Log.e("MyRecyclerAdapter", "inShop"+"true");
         }
         else {
             inShop = false;
+            Log.e("MyRecyclerAdapter", "inShop"+"ase");
         }
         feedProductListRowHolder.checkBox.setChecked(inShop);
 
@@ -91,7 +98,15 @@ public class MyRecyclerProductsAdapter extends RecyclerView.Adapter<FeedProductL
 
             @Override
             public void onClick(View v) {
-                    setProductinShopStatus(((CheckBox) v).isChecked(),shopid,productid);
+                    Log.e("MyRecyclerAdapter", "ciced sopid="+shopid+"productid"+productid);
+                    if (((CheckBox) v).isChecked()) {
+                        product_Concise_Shop.setIsprodinstore("Y");
+                    }
+                else {
+                        product_Concise_Shop.setIsprodinstore("N");
+
+                    }
+                     setProductinShopStatus(((CheckBox) v).isChecked(), shopid, productid);
             }
 
         });
@@ -153,6 +168,7 @@ public class MyRecyclerProductsAdapter extends RecyclerView.Adapter<FeedProductL
 
     @Override
     public int getItemCount() {
+        Log.e("response_code arrays",String.valueOf(feedProductItemList.size()));
         return feedProductItemList.size();
     }
 

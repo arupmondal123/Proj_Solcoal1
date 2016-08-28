@@ -8,6 +8,11 @@ public class Product_Concise_Shop
 	private String	prod_img_link;
 	private String	distance;
 	private String	userId;
+
+	public void setIsprodinstore(String isprodinstore) {
+		this.isprodinstore = isprodinstore;
+	}
+
 	private String	isprodinstore;
 
 

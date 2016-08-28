@@ -7,7 +7,9 @@ import android.app.Activity;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
@@ -171,6 +173,8 @@ public class ShopSettingsActivity extends AppCompatActivity {
 
 
     }
+
+
 
     @Override
     protected void onPause() {

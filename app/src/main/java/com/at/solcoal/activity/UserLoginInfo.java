@@ -107,6 +107,7 @@ public class UserLoginInfo extends Activity
 		//mEdit.setEnabled(false);
 		mEdit.setText(userInfo.getEmail());
 		//((TextView) findViewById(R.id.signed_in_email)).setText(userInfo.getEmail());
+		mEdit.setEnabled(false);
 		((TextView) findViewById(R.id.dob_et)).setText(userInfo.getDob());
 		enableEditTexts(true);
 
@@ -369,21 +370,8 @@ public class UserLoginInfo extends Activity
 		// {
 		// intent = new Intent(UserLoginInfo.this, MainActivity.class);
 		// }
+		intent = new Intent(UserLoginInfo.this, MainActivity.class);
 
-		if (header_textview.getText().toString().trim().equals("Edit Profile"))
-		{
-			intent = new Intent(UserLoginInfo.this, UserProductList.class);
-			intent.putExtra("owner_id", getIntent().getStringExtra("userInfo___"));
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		}
-		else
-		{
-			//UserLoginInfo.this.finish();
-
-			intent = new Intent(UserLoginInfo.this, MainActivity.class);
-			//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-		}
 		com.at.solcoal.web.AsyncWebClient asyncWebClientAdd;
 
 		asyncWebClientAdd = new com.at.solcoal.web.AsyncWebClient();
@@ -438,7 +426,15 @@ public class UserLoginInfo extends Activity
 						intent.putExtra(AppConstant.AFTER_LOGIN_ACTION, afterLoginAction);
 					}
 
-					startActivity(intent);
+					if (header_textview.getText().toString().trim().equals("Edit Profile"))
+					{
+						UserLoginInfo.this.finish();
+					}
+					else
+					{
+						startActivity(intent);
+					}
+
 				}
 			}
 

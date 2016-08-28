@@ -1,6 +1,7 @@
 package com.at.solcoal.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
@@ -9,10 +10,14 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.at.solcoal.R;
 import com.at.solcoal.constants.AppConstant;
@@ -35,8 +40,11 @@ public class AddStoreActivity extends AppCompatActivity {
     EditText input_shopcontactphone = null;
     EditText input_shopcontactweblink = null;
     String shop_id = null;
-
+    TextInputLayout layout_shop_name;
     private ProgressDialog pd;
+    TextInputLayout layout_shop_desc;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,28 +70,107 @@ public class AddStoreActivity extends AppCompatActivity {
         input_shopcontactphone = ((EditText) findViewById(R.id.input_shop_contact_phone));
         input_shopcontactweblink = ((EditText) findViewById(R.id.input_shop_contact_weblink));
 
+        layout_shop_name = (TextInputLayout) findViewById(R.id.input_layout_shop_name);
+        layout_shop_desc = (TextInputLayout) findViewById(R.id.input_layout_shop_description);
 
-        ((FloatingActionButton) findViewById(R.id.fab)).setOnClickListener(new View.OnClickListener() {
+
+        input_shopname.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void onClick(View v) {
-
-                if(ValidateInputClick()){
-                    pd = new ProgressDialog(AddStoreActivity.this);
-                    pd.setMessage("Adding Shop...");
-                    pd.show();
-                    addShop();
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO Auto-generated method stub
+                //Toast.showSmallToast(AddStoreActivity.this, "entered");
+                if( input_shopname.getText().length()>0)
+                {
+                    //Toast.showSmallToast(AddStoreActivity.this, "entered1");
+                    input_shopname.setError(null);
+                    layout_shop_name.setErrorEnabled(false);
                 }
+
             }
 
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (TextUtils.isEmpty(s)) {
+                    // call method
+                }
+            }
         });
 
-    }
+
+        input_shopdescription.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO Auto-generated method stub
+
+                if( input_shopdescription.getText().length()>0)
+                {
+                    input_shopdescription.setError(null);
+                    layout_shop_desc.setErrorEnabled(false);
+                }
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (TextUtils.isEmpty(s)) {
+                    // call method
+                }
+            }
+        });
+
+
+
+        ((FloatingActionButton) findViewById(R.id.fab)).setOnClickListener(new View.OnClickListener() {
+                                                                               @Override
+                                                                               public void onClick(View v) {
+
+                                                                                   if (ValidateInputClick()) {
+                                                                                       pd = new ProgressDialog(AddStoreActivity.this);
+                                                                                       pd.setMessage("Adding Shop...");
+                                                                                       pd.show();
+                                                                                       addShop();
+                                                                                   }
+                                                                               }
+
+                                                                           }
+        );
+
+
+        ((LinearLayout) findViewById(R.id.llshoppicture)).setOnClickListener(new View.OnClickListener() {
+                                                                               @Override
+                                                                               public void onClick (View v){
+
+                                                                                   //Intent intent = new Intent(AddStoreActivity.this, ProductAddPictureActivity.class);
+                                                                                   //intent.putExtra("from_", "AddStoreActivity");
+                                                                                   //startActivity(intent);
+                                                                               }
+
+                                                                           }
+        );
+
+
+        }
 
     public Boolean ValidateInputClick() {
 
         Boolean valid =true;
-        final TextInputLayout layout_shop_name = (TextInputLayout) findViewById(R.id.input_layout_shop_name);
+
         String strshopName = layout_shop_name.getEditText().getText().toString();
 
         if(!TextUtils.isEmpty(strshopName)) {
@@ -96,21 +183,52 @@ public class AddStoreActivity extends AppCompatActivity {
             valid =false;
         }
 
-        final TextInputLayout layout_shop_desc = (TextInputLayout) findViewById(R.id.input_layout_shop_description);
+
         String strshopDesc = layout_shop_desc.getEditText().getText().toString();
 
         if(!TextUtils.isEmpty(strshopDesc)) {
             Snackbar.make(layout_shop_desc, strshopDesc, Snackbar.LENGTH_SHORT).show();
             layout_shop_desc.setErrorEnabled(false);
+
         } else {
-            layout_shop_desc.setError("*Shop description required");
+            layout_shop_desc.setError("*Shop Description required");
             layout_shop_desc.setErrorEnabled(true);
             valid =false;
         }
+
+
+
+        if(!TextUtils.isEmpty(input_shopcontactphone.getText().toString())) {
+            if (!isValidPhoneNumber(input_shopcontactphone.getText().toString())) {
+                input_shopcontactphone.setError("Enter valid Phone Number");
+                //input_shopcontactphone.set(true);
+                valid = false;
+            }
+        }
+        if(!TextUtils.isEmpty(input_shopcontactemail.getText().toString())) {
+           if(!isValidEmail(input_shopcontactemail.getText().toString())) {
+               input_shopcontactemail.setError("Enter valid Email Address");
+               //input_shopcontactphone.set(true);
+               valid = false;
+           }
+        }
+
         return valid;
     }
 
+    private boolean isValidEmail(CharSequence email) {
+        if (!TextUtils.isEmpty(email)) {
+            return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        }
+        return false;
+    }
 
+    private boolean isValidPhoneNumber(CharSequence phoneNumber) {
+        if (!TextUtils.isEmpty(phoneNumber)) {
+            return Patterns.PHONE.matcher(phoneNumber).matches();
+        }
+        return false;
+    }
     private void addShop() {
 
         com.at.solcoal.web.AsyncWebClient asyncWebClient = new com.at.solcoal.web.AsyncWebClient();

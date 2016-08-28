@@ -12,7 +12,7 @@
         android:id="@+id/menu_edit"
         android:title="Edit"
         android:scaleType="centerCrop"
-        android:icon="@drawable/ic_action_edit"
+        android:icon="@drawable/ic_mode_edit_white_24dp"
         appcompat:showAsAction="always" />
 
 </menu>

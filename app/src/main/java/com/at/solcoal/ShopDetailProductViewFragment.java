@@ -18,6 +18,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.at.solcoal.adapter.MyRecyclerProductsAdapter;
 import com.at.solcoal.adapter.MyRecyclerProductsAdapterShopView;
@@ -53,7 +55,8 @@ public class ShopDetailProductViewFragment extends android.support.v4.app.Fragme
     private RecyclerView rv;
     private GridLayoutManager gridLayoutManager;
     private String							shopid					= null;
-
+    private RelativeLayout rlprogress1;
+    private RelativeLayout rltextnoproduct;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,8 +73,15 @@ public class ShopDetailProductViewFragment extends android.support.v4.app.Fragme
         ownerId = getActivity().getIntent().getStringExtra("owner_id");
         //rv.setHasFixedSize(true);
         //fetchShopList(userInfo.getId());
-
-        fetchProductConciseList();
+        progress1 = (CircleProgressBar) rootView.findViewById(R.id.progressBar);
+        rlprogress1 = (RelativeLayout) rootView.findViewById(R.id.rl_progressBar);
+        progress1 = (CircleProgressBar) rootView.findViewById(R.id.progressBar);
+        progress1.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
+        //fetchShopList(userInfo.getId());
+        progress1.setVisibility(View.VISIBLE);
+        rlprogress1.setVisibility(View.VISIBLE);
+        //fetchProductConciseList();
+        rltextnoproduct = (RelativeLayout) rootView.findViewById(R.id.noproduct);
         return rootView;
     }
 
@@ -83,6 +93,7 @@ public class ShopDetailProductViewFragment extends android.support.v4.app.Fragme
         recyclerView.setLayoutManager(gridLayoutManager);
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(getActivity(), R.dimen.card_margin2);
         recyclerView.addItemDecoration(itemDecoration);
+        //recyclerView.setNestedScrollingEnabled(false);
         /*recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),
                 getRandomSublist(Cheeses.sCheeseStrings, 30)));*/
     }
@@ -93,27 +104,33 @@ public class ShopDetailProductViewFragment extends android.support.v4.app.Fragme
     @Override
     public void onResume() {
         super.onResume();
+        fetchProductConciseList();
         //adapter.notifyDataSetChanged();
 
         //fetchShopList(userInfo.getId());
     }
 
 
-
+    private void clearProductConciseList() {
+        try {
+            ProductConciseList.productConciseListForUserShop.clear();
+        } catch (Exception e) {
+        }
+    }
     private void fetchProductConciseList() {
 
-
+        clearProductConciseList();
         com.at.solcoal.web.AsyncWebClient asyncWebClient = new com.at.solcoal.web.AsyncWebClient();
         asyncWebClient.SetUrl(AppConstant.URL);
 
         RequestParams reqParam = new RequestParams();
 
         reqParam.add("shop_id", shopid);
-        reqParam.add("user_id", userInfo.getId());
-        reqParam.add("action", "shop_prod_entries_get");
+        //reqParam.add("user_id", userInfo.getId());
+        reqParam.add("action", "shop_prod_listing");
 
 
-        //Toast.showSmallToast(getActivity(), userInfo.getId());
+        //Toast.showSmallToast(getActivity(), "shop_id="+shopid);
         //reqParam.add("lat", latitude.trim());
         //reqParam.add("long", longitude.trim());
 		/**/
@@ -130,6 +147,7 @@ public class ShopDetailProductViewFragment extends android.support.v4.app.Fragme
                     if (responseCode.equals("1")) {
                         JSONArray pArray = jsr.getJSONArray("data");
                         int l = pArray.length();
+                        Boolean noproduct = true;
                         if (l > 0) {
                             JSONObject obj = null;
                             String productId = "";
@@ -171,24 +189,45 @@ public class ShopDetailProductViewFragment extends android.support.v4.app.Fragme
                                 } catch (Exception e) {
                                     isprodinstore = "";
                                 }
-                                if (isprodinstore == "Y"){
+                                if (isprodinstore.equals("Y")) {
+                                    noproduct = false;
                                     ProductConciseList.productConciseListForUserShop
-                                            .add(new Product_Concise_Shop(productId, title, price, link, distance,isprodinstore,shopid));
+                                            .add(new Product_Concise_Shop(productId, title, price, link, distance, isprodinstore, shopid));
                                 }
 
                             }
-                            if (ProductConciseList.productConciseListForUserShop.size() > 0) {
-                                // setAdaptertoGridView(ProductConciseList.productConciseList);
-                                adapter = new MyRecyclerProductsAdapterShopView(getActivity(), ProductConciseList.productConciseListForUserShop);
-                                rv.setAdapter(adapter);
+                            //if (ProductConciseList.productConciseListForUserShop.size() > 0) {
+                            // setAdaptertoGridView(ProductConciseList.productConciseList);
+                            //  adapter = new MyRecyclerProductsAdapterShopView(getActivity(), ProductConciseList.productConciseListForUserShop);
+                            //  rv.setAdapter(adapter);
+                            //} else {
+                            if (noproduct) {
+                                rltextnoproduct.setVisibility(View.VISIBLE);
                             } else {
-                                Toast.showSmallToast(getActivity(), "No Data found.");
+                                rltextnoproduct.setVisibility(View.INVISIBLE);
                             }
+                            progress1.setVisibility(View.INVISIBLE);
+                            rlprogress1.setVisibility(View.INVISIBLE);
+                            adapter = new MyRecyclerProductsAdapterShopView(getActivity(), ProductConciseList.productConciseListForUserShop);
+                            rv.setAdapter(adapter);
+                            //Toast.showSmallToast(getActivity(), "No Data found.");
+                            //}
+
+
                         } else {
-                            Toast.showSmallToast(getActivity(), "No Data found.");
+
+                            progress1.setVisibility(View.INVISIBLE);
+                            rlprogress1.setVisibility(View.INVISIBLE);
+                            rltextnoproduct.setVisibility(View.VISIBLE);
+                            //Toast.showSmallToast(getActivity(), "No Data found.");
+
+
                         }
                     } else {
-                        Toast.showSmallToast(getActivity(), "Error!!!");
+                        progress1.setVisibility(View.INVISIBLE);
+                        rlprogress1.setVisibility(View.INVISIBLE);
+                        rltextnoproduct.setVisibility(View.VISIBLE);
+                        //Toast.showSmallToast(getActivity(), "Error!!!");
                         //mDilatingDotsProgressBar.hideNow();
                         //progress1.setVisibility(View.INVISIBLE);
                         //linearLayout.setVisibility(View.VISIBLE);

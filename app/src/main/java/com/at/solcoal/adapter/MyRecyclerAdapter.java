@@ -29,10 +29,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<FeedListRowHolder> {
 
     private List<FeedItem> feedItemList;
     private Context mContext;
+    private Boolean ownprofile;
 
-    public MyRecyclerAdapter(Context context, List<FeedItem> feedItemList) {
+    public MyRecyclerAdapter(Context context, List<FeedItem> feedItemList, Boolean ownprofile) {
         this.feedItemList = feedItemList;
         this.mContext = context;
+        this.ownprofile =ownprofile;
     }
 
     @Override
@@ -48,8 +50,8 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<FeedListRowHolder> {
         final FeedItem feedItem = feedItemList.get(i);
         Log.e("MyRecyclerAdapter", "count" + i);
         Picasso.with(mContext).load(feedItem.getThumbnail())
-                .error(R.drawable.placeholder)
-                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder1)
+                .placeholder(R.drawable.placeholder1)
                 .into(feedListRowHolder.thumbnail);
 
         feedListRowHolder.title.setText(feedItem.getTitle());
@@ -70,7 +72,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<FeedListRowHolder> {
                 intent.putExtra("shop_phone_extra", feedItem.getShop_phone_no());
                 intent.putExtra("shop_weblink_extra", feedItem.getShop_weblink());
                 intent.putExtra("shop_shopactive_ind", feedItem.getShop_active_ind());
-
+                if (ownprofile){
+                    intent.putExtra("shop_ownprofile","Y" );
+                }
+                else {
+                    intent.putExtra("shop_ownprofile","N" );
+                }
                 context.startActivity(intent);
             }
         });
