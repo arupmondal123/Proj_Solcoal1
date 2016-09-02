@@ -31,6 +31,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -41,6 +42,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Criteria;
 import com.google.android.gms.location.LocationListener;
 
@@ -52,6 +54,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.transition.Explode;
 import android.transition.Slide;
 import android.transition.TransitionInflater;
@@ -108,6 +112,7 @@ public class MainActivity extends Activity
 	private int locationInterval, fastedInterval;
 
 	private String showShopgroup = null;
+	public static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -394,17 +399,17 @@ public class MainActivity extends Activity
 		(new MessageDialog(context, context.getResources().getString(string_resource_id))).show();
 	}
 	/*
-	 * 
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
+	 *
 	 * */
 
 	/*
-	 * 
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
+	 *
 	 * */
 	private class MessageDialog extends Dialog
 	{
@@ -546,9 +551,52 @@ public class MainActivity extends Activity
 	}
 
 	@Override
-	public void onConnected(Bundle arg0)
-	{
+	public void onRequestPermissionsResult(int requestCode,
+										   String permissions[], int[] grantResults) {
+		switch (requestCode) {
+			case MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
+				// If request is cancelled, the result arrays are empty.
+				if (grantResults.length > 0
+						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+					Log.d("Permission","Permission Granted!! "+ requestCode);
+					getLocation();
 
+				}
+				else {
+
+					// add the response if permission is denied. The app should be closed forcefully.
+					Log.d("Permission","Permission Denied!! " + requestCode);
+				}
+				return;
+			}
+
+			// other 'case' lines to check for other
+			// permissions this app might request
+		}
+	}
+
+	@Override
+	public void onConnected(Bundle arg0){
+
+		// adding new code to fix the permission crash
+
+		//check if the location permission exists; if not exist then ask for it.
+		if (ContextCompat.checkSelfPermission(this,
+				Manifest.permission.ACCESS_FINE_LOCATION)
+				!= PackageManager.PERMISSION_GRANTED) {
+
+			ActivityCompat.requestPermissions(this,
+					new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+					MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+		}
+		else {
+			//if permission already exists then go to next step
+			getLocation();
+		}
+
+	}
+
+	private void getLocation(){
 		LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,mLocationRequest1,this);
 
 		mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
@@ -556,7 +604,7 @@ public class MainActivity extends Activity
 		if (mLastLocation != null)
 		{
 
-			//Toast.showSmallToast(context, "Getting ocation returned");
+			//Toast.showSmallToast(context, "Getting location returned");
 			try
 			{
 				latitude = mLastLocation.getLatitude();
@@ -566,7 +614,7 @@ public class MainActivity extends Activity
 				Log.e("error", ""+e.getMessage());
 				latitude = 0.00d;
 			}
-			
+
 			try
 			{
 				longitude = mLastLocation.getLongitude();
@@ -659,15 +707,15 @@ public class MainActivity extends Activity
 			slide.setSlideEdge(Gravity.TOP);
 			slide.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
 			*/
-		    Explode explode = null;
+		Explode explode = null;
 
-			explode = new Explode();
-			explode.setStartDelay(1000);
-			explode.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+		explode = new Explode();
+		explode.setStartDelay(1000);
+		explode.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
 
-			getWindow().setExitTransition(explode);
-			getWindow().setReenterTransition(explode);
-		}
+		getWindow().setExitTransition(explode);
+		getWindow().setReenterTransition(explode);
+	}
 
 	protected void startIntentService()
 	{
@@ -697,7 +745,7 @@ public class MainActivity extends Activity
 	public void onLocationChanged(Location location)
 	{
 		//setUserLocationAndStartLandingPage(location.getLatitude(), location.getLongitude());
-		Log.e(TAG + "_LocationListener_onLocationChanged()", "onLocationChanged()");
+		Log.e(TAG + "_onLocationChanged()", "onLocationChanged()");
 	}
 /*
 	@Override
