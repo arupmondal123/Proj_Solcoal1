@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import com.applozic.mobicomkit.api.account.user.UserClientService;
 import com.at.solcoal.AddProductsToShop;
+import com.at.solcoal.ProductsFragment;
 import com.at.solcoal.ProuductAddToShopFragment;
 import com.at.solcoal.R;
 import com.at.solcoal.ShopDetailProductViewFragment;
@@ -169,14 +170,18 @@ public class ShopDetail extends AppCompatActivity {
             return true;
         }
 
+/*
         if (id == R.id.menu_edit) {
             /*
             Intent intent = new Intent(ShopDetail.this, SearchInputActivity.class);
             startActivityForResult(intent, 2);
             return true;
-            */
+
             return true;
+
         }
+*/
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -198,8 +203,15 @@ public class ShopDetail extends AppCompatActivity {
         asyncWebClient.SetUrl(AppConstant.URL);
         RequestParams reqParam = new RequestParams();
 
-        reqParam.add("action", "shop_get_by_user");
-        reqParam.add("user_id", userInfo.getId());
+        //reqParam.add("action", "shop_get_by_user");
+        reqParam.add("action", "shop_get");
+        /*
+        if (userInfo != null) {
+            reqParam.add("user_id", userInfo.getId());
+        } else {
+            reqParam.add("user_id", userInfo.getId());
+        }
+*/
         reqParam.add("shop_id", shopid);
         //reqParam.add("user_id", "99");
 
