@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/Relativelayout01"
-    tools:context="com.at.solcoal.activity.InfoActivity">
+    tools:context="com.at.drgrep.activity.InfoActivity">
     <!-- The ActionBar displayed at the top -->
     <include
         layout="@layout/toolbar"

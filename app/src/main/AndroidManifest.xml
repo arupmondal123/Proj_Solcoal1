@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.at.solcoal"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.at.drgrep"
+    android:versionCode="3"
+    android:versionName="1.0.2" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -34,10 +34,10 @@
     <uses-permission android:name="com.at.solcoal.permission.MAPS_RECEIVE" />
 
     <permission
-        android:name="com.at.solcoal.permission.C2D_MESSAGE"
+        android:name="com.at.drgrep.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <permission
-        android:name="com.at.solcoal.permission.MAPS_RECEIVE"
+        android:name="com.at.drgrep.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -163,7 +163,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAAU7uWQ_BkAG8hNV7XCilmJg9psi1CsH0" />
+            android:value="AIzaSyBn_UDphFuYDplDv6YJz5uR2oA85g2K0-c" />
 
         <activity
             android:name=".activity.SearchInputActivity"

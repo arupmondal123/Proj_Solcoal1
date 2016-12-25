@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@color/header_color" >
 
-    <com.at.solcoal.m.DelayAutoCompleteTextView
+    <com.at.drgrep.m.DelayAutoCompleteTextView
         android:id="@+id/geo_autocomplete"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"

@@ -60,7 +60,7 @@
             android:visibility="invisible"
             android:layout_centerHorizontal="true"
             android:orientation="vertical" >
-            <com.at.solcoal.utility.ScrollableSwipeRefreshLayout
+            <com.at.drgrep.utility.ScrollableSwipeRefreshLayout
                 android:id="@+id/activity_main_swipe_refresh_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -81,7 +81,7 @@
                         android:scrollbars="none" >
                     </GridView>
                 </LinearLayout>
-            </com.at.solcoal.utility.ScrollableSwipeRefreshLayout>
+            </com.at.drgrep.utility.ScrollableSwipeRefreshLayout>
 
         </LinearLayout>
     </RelativeLayout>

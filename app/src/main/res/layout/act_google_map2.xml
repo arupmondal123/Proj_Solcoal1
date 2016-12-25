@@ -38,7 +38,7 @@
             android:layout_toRightOf="@+id/handle"
             android:visibility="invisible" >
 
-            <com.at.solcoal.utility.CircleImageView
+            <com.at.drgrep.utility.CircleImageView
                 android:id="@+id/p_image"
                 android:layout_width="41dp"
                 android:layout_height="wrap_content"

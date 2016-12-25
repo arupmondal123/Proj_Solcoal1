@@ -58,28 +58,28 @@ public final class R {
 		public static final int ZoomIn = 0x7f0f004f;
 		public static final int ZoomOut = 0x7f0f0050;
 		public static final int ZoomOutSlide = 0x7f0f0051;
-		public static final int daimajia_indicator_wrapper = 0x7f0f01dc;
-		public static final int daimajia_slider_image = 0x7f0f0255;
-		public static final int daimajia_slider_viewpager = 0x7f0f025d;
-		public static final int default_bottom_left_indicator = 0x7f0f0260;
-		public static final int default_bottom_right_indicator = 0x7f0f025f;
-		public static final int default_center_bottom_indicator = 0x7f0f025e;
-		public static final int default_center_top_indicator = 0x7f0f0261;
-		public static final int default_center_top_left_indicator = 0x7f0f0263;
-		public static final int default_center_top_right_indicator = 0x7f0f0262;
-		public static final int description = 0x7f0f0258;
-		public static final int description_layout = 0x7f0f0257;
+		public static final int daimajia_indicator_wrapper = 0x7f0f01d9;
+		public static final int daimajia_slider_image = 0x7f0f0252;
+		public static final int daimajia_slider_viewpager = 0x7f0f025a;
+		public static final int default_bottom_left_indicator = 0x7f0f025d;
+		public static final int default_bottom_right_indicator = 0x7f0f025c;
+		public static final int default_center_bottom_indicator = 0x7f0f025b;
+		public static final int default_center_top_indicator = 0x7f0f025e;
+		public static final int default_center_top_left_indicator = 0x7f0f0260;
+		public static final int default_center_top_right_indicator = 0x7f0f025f;
+		public static final int description = 0x7f0f0255;
+		public static final int description_layout = 0x7f0f0254;
 		public static final int invisible = 0x7f0f001a;
-		public static final int loading_bar = 0x7f0f0256;
+		public static final int loading_bar = 0x7f0f0253;
 		public static final int oval = 0x7f0f003e;
 		public static final int rect = 0x7f0f003f;
 		public static final int visible = 0x7f0f001b;
 	}
 	public static final class layout {
 		public static final int indicator_layout = 0x7f040080;
-		public static final int render_type_default = 0x7f0400ab;
-		public static final int render_type_text = 0x7f0400ac;
-		public static final int slider_layout = 0x7f0400b3;
+		public static final int render_type_default = 0x7f0400ac;
+		public static final int render_type_text = 0x7f0400ad;
+		public static final int slider_layout = 0x7f0400b4;
 	}
 	public static final class mipmap {
 		public static final int ic_launcher = 0x7f030006;

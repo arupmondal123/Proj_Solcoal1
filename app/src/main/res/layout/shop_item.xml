@@ -49,7 +49,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:transitionName="profile"
-                android:src="@drawable/placeholder"
+                android:src="@drawable/placeholder1"
                 android:scaleType="fitXY" />
 
 

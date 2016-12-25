@@ -42,7 +42,7 @@
             android:gravity="center_vertical"
             android:padding="@dimen/_2dp" >
 
-            <com.at.solcoal.utility.CircleImageView
+            <com.at.drgrep.utility.CircleImageView
                 android:id="@+id/p_image"
                 android:layout_width="41dp"
                 android:layout_height="wrap_content"

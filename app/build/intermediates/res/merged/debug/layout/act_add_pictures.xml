@@ -62,7 +62,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
-            <com.at.solcoal.utility.GridViewWithHeaderAndFooter
+            <com.at.drgrep.utility.GridViewWithHeaderAndFooter
                 android:id="@+id/grid_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -71,7 +71,7 @@
                 android:numColumns="auto_fit"
                 android:scrollbars="none"
                 android:stretchMode="columnWidth" >
-            </com.at.solcoal.utility.GridViewWithHeaderAndFooter>
+            </com.at.drgrep.utility.GridViewWithHeaderAndFooter>
         </LinearLayout>
 
         <LinearLayout

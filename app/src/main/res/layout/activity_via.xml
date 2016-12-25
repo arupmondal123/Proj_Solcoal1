@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.at.solcoal.activity.ViaActivity">
+    tools:context="com.at.drgrep.activity.ViaActivity">
     <Button
         android:id="@+id/via_btn"
         android:layout_width="@dimen/_0dp"

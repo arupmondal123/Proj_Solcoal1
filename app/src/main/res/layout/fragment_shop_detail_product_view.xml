@@ -43,7 +43,7 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:layout_marginTop="@dimen/_20dp"
-            android:text="No product in shop"/>
+            android:text="No products in this shop yet"/>
 
     </RelativeLayout>
 

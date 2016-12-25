@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.at.solcoal"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.at.drgrep"
+    android:versionCode="2"
+    android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -34,10 +34,10 @@
     <uses-permission android:name="com.at.solcoal.permission.MAPS_RECEIVE" />
 
     <permission
-        android:name="com.at.solcoal.permission.C2D_MESSAGE"
+        android:name="com.at.drgrep.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <permission
-        android:name="com.at.solcoal.permission.MAPS_RECEIVE"
+        android:name="com.at.drgrep.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -69,16 +69,16 @@
         android:supportsRtl="true"
         android:theme="@style/ApplozicTheme" >
         <service
-            android:name="com.at.solcoal.intentservice.FetchAddressIntentService"
+            android:name="com.at.drgrep.intentservice.FetchAddressIntentService"
             android:exported="false" />
 
         <activity
-            android:name="com.at.solcoal.activity.SigninActivity"
+            android:name="com.at.drgrep.activity.SigninActivity"
             android:label="DrGrep"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.at.solcoal.activity.MainActivity"
+            android:name="com.at.drgrep.activity.MainActivity"
             android:background="@color/transparent"
             android:label="DrGrep"
             android:noHistory="false"
@@ -92,36 +92,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.ProductAddPictureActivity"
+            android:name="com.at.drgrep.activity.ProductAddPictureActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.ProductDetailsActivity"
+            android:name="com.at.drgrep.activity.ProductDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.GoogleMapActivity"
+            android:name="com.at.drgrep.activity.GoogleMapActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.FullPictureActivity"
+            android:name="com.at.drgrep.activity.FullPictureActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.Congratulations"
+            android:name="com.at.drgrep.activity.Congratulations"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.ProductAddProductActivity"
+            android:name="com.at.drgrep.activity.ProductAddProductActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.HoldingPageActivity"
+            android:name="com.at.drgrep.activity.HoldingPageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
         <activity
-            android:name="com.at.solcoal.activity.LoginActivity"
+            android:name="com.at.drgrep.activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.MessagingActivity"
+            android:name="com.at.drgrep.activity.MessagingActivity"
             android:screenOrientation="portrait" />
 
         <service
-            android:name="com.at.solcoal.activity.SinchService"
+            android:name="com.at.drgrep.activity.SinchService"
             android:enabled="true"
             android:exported="true" />
 
@@ -132,16 +132,16 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="com.at.solcoal.activity.UserLoginInfo"
+            android:name="com.at.drgrep.activity.UserLoginInfo"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.UserProductList"
+            android:name="com.at.drgrep.activity.UserProductList"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_user_product_list"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" />
         <activity
-            android:name="com.at.solcoal.activity.UserChatEntryHoldingPage"
+            android:name="com.at.drgrep.activity.UserChatEntryHoldingPage"
             android:label="@string/title_activity_user_chat_entry_holding_page" >
         </activity>
         <activity
@@ -149,7 +149,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.login.FbLoginActivity"
+            android:name="com.at.drgrep.activity.login.FbLoginActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
@@ -159,16 +159,16 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name="com.at.solcoal.activity.login.GPlusLoginActivity"
+            android:name="com.at.drgrep.activity.login.GPlusLoginActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAAU7uWQ_BkAG8hNV7XCilmJg9psi1CsH0" />
+            android:value="AIzaSyBn_UDphFuYDplDv6YJz5uR2oA85g2K0-c" />
 
         <activity
-            android:name="com.at.solcoal.activity.SearchInputActivity"
-            android:parentActivityName="com.at.solcoal.activity.ProductListActivity"
+            android:name="com.at.drgrep.activity.SearchInputActivity"
+            android:parentActivityName="com.at.drgrep.activity.ProductListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" >
 
@@ -193,13 +193,13 @@
                    android:value="@integer/google_play_services_version" />
         -->
         <activity
-            android:name="com.at.solcoal.activity.AfterLoginActivity___"
+            android:name="com.at.drgrep.activity.AfterLoginActivity___"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.EditProfileActivity___"
+            android:name="com.at.drgrep.activity.EditProfileActivity___"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.at.solcoal.activity.SplashActivity"
+            android:name="com.at.drgrep.activity.SplashActivity"
             android:label="DrGrep"
             android:theme="@style/SplashTheme" >
         </activity>
@@ -210,7 +210,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:parentActivityName="com.at.solcoal.activity.MainActivity"
+            android:parentActivityName="com.at.drgrep.activity.MainActivity"
             android:theme="@style/ApplozicTheme" >
 
             <!-- Parent activity meta-data to support API level 7+ -->
@@ -337,7 +337,7 @@
             android:name="com.applozic.mobicomkit.uiwidgets.notification.MTNotificationBroadcastReceiver"
             android:exported="false" >
             <intent-filter>
-                <action android:name="com.at.solcoal.send.notification" />
+                <action android:name="com.at.drgrep.send.notification" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.applozic.mobicomkit.broadcast.TimeChangeBroadcastReceiver" >
@@ -366,13 +366,13 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="com.at.solcoal.ApplozicGcmListenerService" >
+        <service android:name="com.at.drgrep.ApplozicGcmListenerService" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
         <service
-            android:name="com.at.solcoal.GcmInstanceIDListenerService"
+            android:name="com.at.drgrep.GcmInstanceIDListenerService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
@@ -417,33 +417,33 @@
 
         <meta-data
             android:name="com.package.name"
-            android:value="com.at.solcoal" />
+            android:value="com.at.drgrep" />
  <!-- NOTE: Do NOT change this, it should remain same i.e 'com.package.name' -->
         <!-- Changes for Applozic ends /> -->
 
         <activity
-            android:name="com.at.solcoal.activity.InfoActivity"
+            android:name="com.at.drgrep.activity.InfoActivity"
             android:label="@string/title_activity_info" >
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.AboutusActivity"
+            android:name="com.at.drgrep.activity.AboutusActivity"
             android:label="@string/title_activity_aboutus" >
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.CustomerSupport"
+            android:name="com.at.drgrep.activity.CustomerSupport"
             android:label="@string/title_activity_customer_support" >
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.FeedBackActivity"
+            android:name="com.at.drgrep.activity.FeedBackActivity"
             android:label="@string/title_activity_feed_back"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.FaqActivity"
+            android:name="com.at.drgrep.activity.FaqActivity"
             android:label="@string/title_activity_faq" >
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.ProductListActivity"
+            android:name="com.at.drgrep.activity.ProductListActivity"
             android:label="@string/title_activity_product_list"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" >
@@ -452,26 +452,26 @@
                 android:value=".activity.SearchInputActivity" />
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.UserProfileActivity"
+            android:name="com.at.drgrep.activity.UserProfileActivity"
             android:label="@string/title_activity_user_profile"
             android:theme="@style/MyMaterialTheme" >
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.AddStoreActivity"
+            android:name="com.at.drgrep.activity.AddStoreActivity"
             android:label="@string/title_activity_add_store"
             android:theme="@style/MyMaterialTheme" >
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.ShopSettingsActivity"
+            android:name="com.at.drgrep.activity.ShopSettingsActivity"
             android:label="@string/title_activity_shop_settings" >
         </activity>
         <activity
-            android:name="com.at.solcoal.activity.ShopDetail"
+            android:name="com.at.drgrep.activity.ShopDetail"
             android:label="@string/title_activity_shop_detail"
             android:theme="@style/MyMaterialTheme" >
         </activity>
         <activity
-            android:name="com.at.solcoal.AddProductsToShop"
+            android:name="com.at.drgrep.AddProductsToShop"
             android:label="@string/title_activity_add_products_to_shop" >
         </activity>
     </application>
